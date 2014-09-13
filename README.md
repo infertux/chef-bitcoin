@@ -1,6 +1,6 @@
 Bitcoin Cookbook
 ================
-[![Cookbook](https://img.shields.io/cookbook/v/bitcoin.svg)](https://github.com/infertux/chef-bitcoin)
+[![Cookbook](https://img.shields.io/cookbook/v/bitcoin.svg)](https://supermarket.getchef.com/cookbooks/bitcoin)
 [![Build Status](https://travis-ci.org/infertux/chef-bitcoin.svg?branch=master)](https://travis-ci.org/infertux/chef-bitcoin)
 
 This cookbook downloads, installs and configures Bitcoin Core as a full node.
