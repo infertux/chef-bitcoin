@@ -1,0 +1,30 @@
+#!/bin/bash -eu
+
+[ "$(id -un)" = "<%= node['bitcoin']['user'] %>" ]
+
+case "$1" in
+  start)
+    nice -n <%= node['bitcoin']['nice_level'] %> -- ./<%= node['bitcoin']['binary'] %> -daemon > /dev/null
+    ;;
+  stop)
+    ./<%= node['bitcoin']['binary'] %> stop > /dev/null
+    ;;
+  restart)
+    ./$0 stop
+    while [ -e .bitcoin/bitcoind.pid ]; do sleep 1; done
+    ./$0 start
+    ;;
+  status)
+    set +e
+    ./<%= node['bitcoin']['binary'] %> getinfo
+    echo
+    tail .bitcoin/debug.log
+    echo
+    du -sh .bitcoin/blocks/
+    set -e
+    ;;
+  *)
+    echo "Valid actions are start, stop, restart or status."
+    exit 1
+esac
+

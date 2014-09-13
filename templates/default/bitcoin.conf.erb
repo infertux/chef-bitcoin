@@ -1,0 +1,5 @@
+rpcuser=<%= SecureRandom.hex %>
+rpcpassword=<%= SecureRandom.hex %>
+alertnotify=echo %s | mail -s "Bitcoin Alert" root
+server=1
+checkblocks=<%= node['bitcoin']['checkblocks'] %>
