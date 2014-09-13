@@ -9,26 +9,41 @@ Requirements
 ------------
 
 ### platforms
-This should work on any decent Linux distribution (tested on RHEL and Debian families so far).
 Note that it only works on x86_64 architectures at the moment.
 
 ### network
-In order to actively contribute to the Bitcoin network, you will need to open your port TCP 8333.
+In order to actively contribute to the Bitcoin network, you will need to open your TCP port 8333.
 This cookbook does *not* make sure your port 8333 is open since this is very much dependant on your networking setup.
 
 Usage
 -----
 
-Just include `bitcoin` in your node's `run_list` to spread the love:
+### `bitcoin::package` recipe
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[bitcoin]"
-  ]
-}
-```
+Configures repository from http://www.ringingliberty.com/bitcoin/ and installs pre-packaged binary with `bitcoin` systemd service.
+
+Pros:
+
+  - proper packaging
+  - SELinux support
+
+Cons:
+
+  - supports only RHEL, CentOS and Fedora for now
+
+### `bitcoin::binary` recipe
+
+Downloads the official binary from https://bitcoin.org/ and copies it along with a wrapper script to start, stop, restart and get the status of `bitcoind`.
+
+Pros:
+
+  - official binary from https://bitcoin.org/
+  - supports most distributions
+
+Cons:
+
+  - no SELinux support
+  - no init.d/systemd-like script to manage `bitcoind` as a Unix service
 
 License
 -------
