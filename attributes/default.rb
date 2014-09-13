@@ -13,4 +13,3 @@ default['bitcoin']['service_wrapper'] = "bitcoind"
 default['bitcoin']['binary'] = "bin/bitcoind"
 default['bitcoin']['nice_level'] = 10
 default['bitcoin']['checkblocks'] = 288 # NOTE: this is the default, you might want to decrease it with very low-end CPUs to get fast boot time
-

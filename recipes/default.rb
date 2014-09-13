@@ -7,7 +7,7 @@
 
   execute "bitcoind #{service_action}" do
     cwd node['bitcoin']['home']
-    command %{su - #{node['bitcoin']['user']} -c './#{node['bitcoin']['service_wrapper']} #{service_action}'}
+    command %(su - #{node['bitcoin']['user']} -c './#{node['bitcoin']['service_wrapper']} #{service_action}')
     action :nothing
   end
 
@@ -16,7 +16,7 @@ end
 user node['bitcoin']['user'] do
   home node['bitcoin']['home']
   shell "/bin/bash"
-  supports :manage_home => true
+  supports manage_home: true
 end
 
 directory "#{node['bitcoin']['home']}/.bitcoin" do
@@ -41,4 +41,3 @@ template "#{node['bitcoin']['home']}/#{node['bitcoin']['service_wrapper']}" do
 end
 
 include_recipe "bitcoin::install" unless ::File.exist? "#{node['bitcoin']['home']}/#{node['bitcoin']['binary']}"
-

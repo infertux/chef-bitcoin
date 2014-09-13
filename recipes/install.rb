@@ -18,7 +18,7 @@ end
 
 execute "verify checksum" do
   cwd ::File.dirname(archive_path)
-  command %{echo "#{node['bitcoin']['checksum']}  #{archive_file}" | sha256sum -c -}
+  command %(echo "#{node['bitcoin']['checksum']}  #{archive_file}" | sha256sum -c -)
 end
 
 directory ::File.dirname(binary_path) do
@@ -43,4 +43,3 @@ file binary_path do
   group node['bitcoin']['user']
   mode "0500"
 end
-
