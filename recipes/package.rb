@@ -4,7 +4,7 @@
 #
 
 repo_url = node['bitcoin']['package']['repo_url'][node['platform_family']]
-raise "No package for #{node['platform_family']}" unless repo_url
+fail "No package for #{node['platform_family']}" unless repo_url
 
 repo_file = ::File.basename(repo_url)
 repo_path = "#{Chef::Config['file_cache_path']}/bitcoin/#{repo_file}"
@@ -43,6 +43,5 @@ template "/etc/bitcoin/bitcoin.conf" do
 end
 
 service "bitcoin" do
-  action [ :enable, :start ]
+  action [:enable, :start]
 end
-

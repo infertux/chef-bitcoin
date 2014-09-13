@@ -29,7 +29,6 @@ template "#{node['bitcoin']['binary']['home']}/#{node['bitcoin']['service_wrappe
   mode "0500"
 end
 
-
 archive_file = "bitcoin-#{node['bitcoin']['binary']['version']}-linux.tar.gz"
 archive_path = "#{Chef::Config['file_cache_path']}/bitcoin/#{archive_file}"
 extract_path = "#{Chef::Config['file_cache_path']}/bitcoin/bitcoin-#{node['bitcoin']['binary']['version']}"
@@ -70,4 +69,3 @@ file binary_path do
   group node['bitcoin']['user']
   mode "0500"
 end
-
