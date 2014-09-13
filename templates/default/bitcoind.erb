@@ -4,10 +4,10 @@
 
 case "$1" in
   start)
-    nice -n <%= node['bitcoin']['nice_level'] %> -- ./<%= node['bitcoin']['binary'] %> -daemon > /dev/null
+    nice -n <%= node['bitcoin']['binary']['nice_level'] %> -- ./<%= node['bitcoin']['binary']['bitcoind'] %> -daemon > /dev/null
     ;;
   stop)
-    ./<%= node['bitcoin']['binary'] %> stop > /dev/null
+    ./<%= node['bitcoin']['binary']['bitcoind'] %> stop > /dev/null
     ;;
   restart)
     ./$0 stop
@@ -16,7 +16,7 @@ case "$1" in
     ;;
   status)
     set +e
-    ./<%= node['bitcoin']['binary'] %> getinfo
+    ./<%= node['bitcoin']['binary']['bitcoind'] %> getinfo
     echo
     tail .bitcoin/debug.log
     echo
