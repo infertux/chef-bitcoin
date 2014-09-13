@@ -17,7 +17,7 @@ default['bitcoin']['binary']['service_wrapper'] = "bitcoind"
 default['bitcoin']['binary']['bitcoind'] = "bin/bitcoind"
 default['bitcoin']['binary']['nice_level'] = 10
 
-# 'pacakge' recipe
+# 'package' recipe
 
 default['bitcoin']['package']['repo_url']['rhel'] = 'http://linux.ringingliberty.com/bitcoin/el7/x86_64/bitcoin-release-1-6.noarch.rpm'
 default['bitcoin']['package']['repo_checksum']['rhel'] = '1d3c3984d6155a504238834a27805ca93ab598a798c6bfd54625719d46aaa969'
