@@ -31,7 +31,7 @@ bash "install_bitcoin" do
   cwd "/usr/src"
   creates node['bitcoin']['source']['bitcoind']
   code <<-EOH
-    unzip bitcoin-#{node['bitcoin']['source']['version']}.zip
+    test -d bitcoin-#{node['bitcoin']['source']['version']} || unzip bitcoin-#{node['bitcoin']['source']['version']}.zip
     (cd bitcoin-#{node['bitcoin']['source']['version']}/ && ./autogen.sh && ./configure #{node['bitcoin']['source']['configure_options']} && make #{node['bitcoin']['source']['make_options']} && strip src/bitcoind && make install)
   EOH
 end
