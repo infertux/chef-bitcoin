@@ -38,9 +38,9 @@ case "$1" in
         /sbin/start-stop-daemon --stop --pidfile $PIDFILE --verbose
     ;;
     restart)
-        stop
+        $0 stop
         sleep 10
-        start
+        $0 start
     ;;
   *)
     echo "Usage: /etc/init.d/bincoind {start|stop|status|restart}"
