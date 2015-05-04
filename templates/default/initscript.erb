@@ -26,12 +26,12 @@ case "$1" in
             -b --exec $DAEMON $ARGS
     ;;
     status)
-    	echo "Status"
+        echo "Status"
         sudo -u <%= node['bitcoin']['user'] %> <%= @bitcoincli %> getinfo
-    	echo
-    	tail <%= @btc_home %>/debug.log
-    	echo
-    	du -sh <%= @btc_home %>/blocks/
+        echo
+        tail <%= @btc_home %>/debug.log
+        echo
+        du -sh <%= @btc_home %>/blocks/
     ;;
     stop)
         echo "Stopping server"
@@ -42,9 +42,9 @@ case "$1" in
         sleep 10
         $0 start
     ;;
-  *)
-    echo "Usage: /etc/init.d/bincoind {start|stop|status|restart}"
-    exit 1
+    *)
+        echo "Usage: /etc/init.d/bincoind {start|stop|status|restart}"
+        exit 1
     ;;
 esac
 
