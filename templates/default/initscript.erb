@@ -1,0 +1,51 @@
+#!/bin/bash
+# Created by chef
+
+### BEGIN INIT INFO
+# Provides: Bitcoin Core
+# Required-Start: $networking
+# Required-Stop: $networking
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start at boot and stop at shutdown
+# Description: Starts Bitcoin Core service
+### END INIT INFO
+
+DAEMON="<%= @bitcoind %>"
+ARGS=""
+PIDFILE="<%= @btc_home %>/bitcoind.pid"
+
+case "$1" in
+    start)
+        echo "Starting server"
+        cd /tmp
+        /sbin/start-stop-daemon --start --pidfile $PIDFILE \
+            --user <%= node['bitcoin']['user'] %> \
+            --group <%= node['bitcoin']['user'] %> \
+            --chuid <%= node['bitcoin']['user'] %> \
+            -b --exec $DAEMON $ARGS
+    ;;
+    status)
+        echo "Status"
+        sudo -u <%= node['bitcoin']['user'] %> <%= @bitcoincli %> getinfo
+        echo
+        tail <%= @btc_home %>/debug.log
+        echo
+        du -sh <%= @btc_home %>/blocks/
+    ;;
+    stop)
+        echo "Stopping server"
+        /sbin/start-stop-daemon --stop --pidfile $PIDFILE --verbose
+    ;;
+    restart)
+        $0 stop
+        sleep 10
+        $0 start
+    ;;
+    *)
+        echo "Usage: /etc/init.d/bincoind {start|stop|status|restart}"
+        exit 1
+    ;;
+esac
+
+exit 0
