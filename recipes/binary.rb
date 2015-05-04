@@ -3,30 +3,26 @@
 # Recipe:: binary
 #
 
+btc_home = "#{node['bitcoin']['binary']['home']}/.bitcoin"
+btc_conf = "#{btc_home}/bitcoin.conf"
+
 user node['bitcoin']['user'] do
   home node['bitcoin']['binary']['home']
   shell "/bin/bash"
   supports manage_home: true
 end
 
-directory "#{node['bitcoin']['binary']['home']}/.bitcoin" do
+directory btc_home do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
   mode "0700"
 end
 
-template "#{node['bitcoin']['binary']['home']}/.bitcoin/bitcoin.conf" do
+template btc_conf do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
   mode "0600"
   action :create_if_missing
-end
-
-template "#{node['bitcoin']['binary']['home']}/#{node['bitcoin']['service_wrapper']}" do
-  source "bitcoind.erb"
-  owner node['bitcoin']['user']
-  group node['bitcoin']['user']
-  mode "0500"
 end
 
 archive_file = "bitcoin-#{node['bitcoin']['binary']['version']}-linux.tar.gz"
@@ -68,4 +64,23 @@ file binary_path do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
   mode "0500"
+end
+
+# create init file
+template "/etc/init.d/#{node['bitcoin']['binary']['service_wrapper']}" do
+  source "initscript.erb"
+  owner node['bitcoin']['user']
+  group node['bitcoin']['user']
+  mode "0500"
+  variables(
+    bitcoind:   node['bitcoin']['binary']['bitcoind'],
+    bitcoincli: node['bitcoin']['binary']['bitcoin-cli'],
+    btc_home:   btc_home
+  )
+end
+
+service node['bitcoin']['binary']['service_wrapper'] do
+  supports   [status: true, start: true, stop: true, restart: true]
+  action     [:enable, :start]
+  subscribes :restart, "template[/etc/init.d/#{node['bitcoin']['binary']['service_wrapper']}]", :delayed
 end
