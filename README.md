@@ -8,9 +8,6 @@ This cookbook downloads, installs and configures Bitcoin Core as a full node.
 Requirements
 ------------
 
-### platforms
-Note that it only works on x86_64 architectures at the moment.
-
 ### network
 In order to actively contribute to the Bitcoin network, you will need to open your TCP port 8333.
 This cookbook does *not* make sure your port 8333 is open since this is very much dependant on your networking setup.
@@ -30,10 +27,11 @@ Pros:
 Cons:
 
   - supports only RHEL, CentOS and Fedora for now
+  - supports only x86_64 architecture
 
 ### `bitcoin::binary` recipe
 
-Downloads the official binary from https://bitcoin.org/ and copies it along with a wrapper script to start, stop, restart and get the status of `bitcoind`.
+Downloads the official binary from https://bitcoin.org/ and copies it along with an init.d service script.
 
 Pros:
 
@@ -43,7 +41,21 @@ Pros:
 Cons:
 
   - no SELinux support
-  - no init.d/systemd-like script to manage `bitcoind` as a Unix service
+  - supports only x86_64 architecture
+
+### `bitcoin::source` recipe
+
+Downloads the official release from https://github.com/bitcoin/bitcoin/releases and compiles it along with an init.d service script.
+
+Pros:
+
+  - official source code from https://bitcoin.org/
+  - supports most distributions
+  - supports ARM and other architectures
+
+Cons:
+
+  - no SELinux support
 
 License
 -------
