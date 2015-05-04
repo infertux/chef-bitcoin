@@ -25,7 +25,7 @@ template btc_conf do
   action :create_if_missing
 end
 
-archive_file = "bitcoin-#{node['bitcoin']['binary']['version']}-linux.tar.gz"
+archive_file = "bitcoin-#{node['bitcoin']['binary']['version']}-linux64.tar.gz"
 archive_path = "#{Chef::Config['file_cache_path']}/bitcoin/#{archive_file}"
 extract_path = "#{Chef::Config['file_cache_path']}/bitcoin/bitcoin-#{node['bitcoin']['binary']['version']}"
 binary_path  = "#{node['bitcoin']['home']}/#{node['bitcoin']['binary']['bitcoind']}"
