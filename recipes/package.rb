@@ -27,9 +27,16 @@ package "bitcoin-release" do
   source repo_path
 end
 
-package "bitcoin-server" do
+bitcoin_variant = case node['bitcoin']['package']['variant']
+                  when "core" then "bitcoin"
+                  when "classic" then "bitcoinclassic"
+                  when "xt" then "bitcoinxt"
+                  else raise "Valid variants are core, classic and xt."
+end
+
+package "#{bitcoin_variant}-server" do
   only_if do
-    Chef::Log.info('The installation if bitcoin-server may take several minutes while the SELinux policies are being built.')
+    Chef::Log.warn('The installation of bitcoin may take several minutes while the SELinux policies are being built.')
 
     true # NOTE: just a hack to display the above message at the right time
   end

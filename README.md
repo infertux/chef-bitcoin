@@ -23,11 +23,24 @@ Pros:
 
   - proper packaging
   - SELinux support
+  - other forks/variants than Bitcoin Core available
 
 Cons:
 
   - supports only RHEL, CentOS and Fedora for now
   - supports only x86_64 architecture
+
+You can run a Bitcoin fork/variant like this:
+
+```
+    "bitcoin": {
+      "package": {
+        "variant": "classic"
+      }
+    }
+```
+
+The valid variants are `core` (default), `classic` and `xt`.
 
 ### `bitcoin::binary` recipe
 
