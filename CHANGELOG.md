@@ -1,6 +1,10 @@
 Bitcoin CHANGELOG
 =================
 
+## v1.3.0
+
+- Add ability to run a Bitcoin fork/variant.
+
 ## v1.2.0
 - Add recipe to compile Bitcoin from source - thanks @facastagnini!
 - Improve init.d script.
