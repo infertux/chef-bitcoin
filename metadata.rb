@@ -2,7 +2,7 @@ name             'bitcoin'
 maintainer       'Cédric Félizard'
 maintainer_email 'cedric@felizard.fr'
 license          'MIT'
-description      'Installs/Configures the official Bitcoin Core'
+description      'Installs and configures Bitcoin'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.3.0'
 
