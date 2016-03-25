@@ -19,17 +19,6 @@ Usage
 
 Configures repository from http://www.ringingliberty.com/bitcoin/ and installs pre-packaged binary with `bitcoin` systemd service.
 
-Pros:
-
-  - proper packaging
-  - SELinux support
-  - other forks/variants than Bitcoin Core available
-
-Cons:
-
-  - supports only RHEL, CentOS and Fedora for now
-  - supports only x86_64 architecture
-
 You can run a Bitcoin fork/variant like this:
 
 ```
@@ -46,29 +35,23 @@ The valid variants are `core` (default), `classic` and `xt`.
 
 Downloads the official binary from https://bitcoin.org/ and copies it along with an init.d service script.
 
-Pros:
-
-  - official binary from https://bitcoin.org/
-  - supports most distributions
-
-Cons:
-
-  - no SELinux support
-  - supports only x86_64 architecture
-
 ### `bitcoin::source` recipe
 
 Downloads the official release from https://github.com/bitcoin/bitcoin/releases and compiles it along with an init.d service script.
 
-Pros:
 
-  - official source code from https://bitcoin.org/
-  - supports most distributions
-  - supports ARM and other architectures
+### Comparison table
 
-Cons:
+|                                     | package                    | binary      | source  |
+| :---                                | :---:                      | :---:       | :---:   |
+| proper packaging                    | **yes**                    | no          | no      |
+| SELinux support                     | **yes**                    | no          | no      |
+| forks available                     | **yes**                    | no¹         | no¹     |
+| support most distributions          | only RHEL, CentOS & Fedora | **yes**     | **yes** |
+| support ARM and other architectures | only x86_64                | only x86_64 | **yes** |
+| "official"                          | no                         | **yes**     | **yes** |
 
-  - no SELinux support
+¹ No but possible, pull request welcomed.
 
 License
 -------
