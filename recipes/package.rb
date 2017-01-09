@@ -27,12 +27,13 @@ package "bitcoin-release" do
   source repo_path
 end
 
-bitcoin_variant = case node['bitcoin']['package']['variant']
-                  when "core" then "bitcoin"
-                  when "classic" then "bitcoinclassic"
-                  when "xt" then "bitcoinxt"
-                  else raise "Valid variants are core, classic and xt."
-end
+bitcoin_variant = \
+  case node['bitcoin']['package']['variant']
+  when "core" then "bitcoin"
+  when "classic" then "bitcoinclassic"
+  when "xt" then "bitcoinxt"
+  else raise "Valid variants are core, classic and xt."
+  end
 
 package "#{bitcoin_variant}-server" do
   only_if do
