@@ -28,8 +28,8 @@ default['bitcoin']['package']['variant'] = 'core' # possible variants: core, cla
 
 # 'source' recipe
 
-default['bitcoin']['source']['version'] = '0.10.1'
-default['bitcoin']['source']['checksum'] = '18a88785748588bb90764dc7f0aad5548da880d4d91f5803c7076cbcadb2959e'
+default['bitcoin']['source']['version'] = '0.13.2'
+default['bitcoin']['source']['checksum'] = 'a3ad9ee60c9ce8b3ee804a4fe4c84518ba5871998c23ff772c1421f7c5480960'
 default['bitcoin']['source']['service_wrapper'] = "bitcoind"
 default['bitcoin']['source']['home'] = "/home/#{node['bitcoin']['user']}"
 default['bitcoin']['source']['prefix'] = "/usr/local"
