@@ -11,8 +11,8 @@ default['bitcoin']['checkblocks'] = 288 # NOTE: this is the default, you might w
 # 'binary' recipe
 
 default['bitcoin']['binary']['home'] = "/home/#{node['bitcoin']['user']}"
-default['bitcoin']['binary']['version'] = '0.10.1'
-default['bitcoin']['binary']['checksum'] = 'c1fddf6921186c6da954a977995d45a140bc07158dced004be86ddb26d9ca54d'
+default['bitcoin']['binary']['version'] = '0.13.2'
+default['bitcoin']['binary']['checksum'] = 'a3ad9ee60c9ce8b3ee804a4fe4c84518ba5871998c23ff772c1421f7c5480960'
 default['bitcoin']['binary']['service_wrapper'] = "bitcoind"
 default['bitcoin']['binary']['bitcoind'] = "bin/bitcoind"
 default['bitcoin']['binary']['bitcoin-cli'] = node['bitcoin']['binary']['bitcoind']
