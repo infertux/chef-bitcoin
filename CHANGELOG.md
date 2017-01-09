@@ -1,6 +1,10 @@
 Bitcoin CHANGELOG
 =================
 
+## v1.4.0
+
+- Update Bitcoin versions and dependencies.
+
 ## v1.3.0
 
 - Add ability to run a Bitcoin fork/variant.

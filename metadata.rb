@@ -6,7 +6,7 @@ description      'Installs and configures Bitcoin'
 source_url       'https://github.com/infertux/chef-bitcoin'
 issues_url       'https://github.com/infertux/chef-bitcoin/issues'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.3.0'
+version          '1.4.0'
 
 supports 'centos'
 supports 'debian'
