@@ -37,7 +37,8 @@ default['bitcoin']['source']['bitcoind'] = "#{node['bitcoin']['source']['prefix'
 default['bitcoin']['source']['bitcoin-cli'] = "#{node['bitcoin']['source']['prefix']}/bin/bitcoin-cli"
 default['bitcoin']['source']['configure_options'] = "--with-gui=no --disable-wallet --without-miniupnpc --disable-zmq --prefix=#{node['bitcoin']['source']['prefix']}"
 default['bitcoin']['source']['make_options'] = "-j#{node['cpu']['total']}"
-default['bitcoin']['source']['dependencies'] = [
-  'build-essential', 'autoconf', 'libssl-dev', 'libboost-dev', 'pkg-config',
-  'libboost-chrono-dev', 'libboost-filesystem-dev', 'libboost-program-options-dev',
-  'libboost-system-dev', 'libboost-test-dev', 'libboost-thread-dev', 'libtool']
+default['bitcoin']['source']['dependencies'] = %w(
+  build-essential autoconf libssl-dev libboost-dev pkg-config
+  libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev
+  libboost-system-dev libboost-test-dev libboost-thread-dev libtool
+)
