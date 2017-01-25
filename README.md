@@ -15,6 +15,18 @@ This cookbook does *not* make sure your port 8333 is open since this is very muc
 Usage
 -----
 
+### Comparison table
+
+| recipe:                             | package                    | binary      | source               |
+| :---                                | :---:                      | :---:       | :---:                |
+| support most distributions          | only RHEL, CentOS & Fedora | **yes**     | **yes**              |
+| support ARM and other architectures | only x86_64                | only x86_64 | **yes**              |
+| variants available                  | **Core, Classic & XT**     | Core only¹  | **Core & Unlimited** |
+| proper packaging                    | **yes**                    | no          | no                   |
+| SELinux support                     | **yes**                    | no          | no                   |
+
+¹ Pull request welcomed.
+
 ### `bitcoin::package` recipe
 
 Configures repository from http://www.ringingliberty.com/bitcoin/ and installs pre-packaged binary with `bitcoin` systemd service.
@@ -29,31 +41,17 @@ You can run a Bitcoin fork/variant like this:
     }
 ```
 
-The valid variants are `core` (default), `classic` and `xt`.
+The valid variants are `core` (default), `unlimited`, `classic` and `xt`.
 
 ### `bitcoin::binary` recipe
 
-Downloads the official binary from https://bitcoin.org/ and copies it along with an init.d service script.
+Downloads the official binary from https://bitcoin.org/ and copies it along with an systemd service script.
 
 ### `bitcoin::source` recipe
 
-Downloads the official release from https://github.com/bitcoin/bitcoin/releases and compiles it along with an init.d service script.
+Downloads the official release from https://github.com/bitcoin/bitcoin/releases and compiles it along with an systemd service script.
 
-
-### Comparison table
-
-|                                     | package                    | binary      | source  |
-| :---                                | :---:                      | :---:       | :---:   |
-| proper packaging                    | **yes**                    | no          | no      |
-| SELinux support                     | **yes**                    | no          | no      |
-| forks available                     | **yes**                    | no¹         | no¹     |
-| support most distributions          | only RHEL, CentOS & Fedora | **yes**     | **yes** |
-| support ARM and other architectures | only x86_64                | only x86_64 | **yes** |
-| "official"                          | no                         | **yes**     | **yes** |
-
-¹ No but possible, pull request welcomed.
 
 License
 -------
 MIT
-
