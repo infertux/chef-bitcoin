@@ -1,4 +1,5 @@
 language: ruby
+before_install: gem update --system --no-doc # https://github.com/sickill/rainbow/issues/49
 rvm:
   - 2.2.6
   - 2.3.3
