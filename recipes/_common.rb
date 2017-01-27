@@ -3,22 +3,19 @@
 # Recipe:: _common
 #
 
-bitcoin_home = "#{node['bitcoin']['home']}/.bitcoin"
-bitcoin_conf = "#{bitcoin_home}/bitcoin.conf"
-
 user node['bitcoin']['user'] do
   home node['bitcoin']['home']
   shell "/bin/bash"
-  supports manage_home: true
+  manage_home true
 end
 
-directory bitcoin_home do
+directory node['bitcoin']['conf_dir'] do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
   mode "0700"
 end
 
-template bitcoin_conf do
+template node['bitcoin']['conf_file'] do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
   mode "0600"

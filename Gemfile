@@ -5,6 +5,11 @@ group :lint do
   gem 'rubocop'
 end
 
+group :test do
+  gem 'kitchen-docker'
+  gem 'test-kitchen'
+end
+
 group :development do
   gem 'rake'
 end

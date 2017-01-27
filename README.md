@@ -17,15 +17,15 @@ Usage
 
 ### Comparison table
 
-| recipe:                             | package                    | binary      | source               |
-| :---                                | :---:                      | :---:       | :---:                |
-| support most distributions          | only RHEL, CentOS & Fedora | **yes**     | **yes**              |
-| support ARM and other architectures | only x86_64                | only x86_64 | **yes**              |
-| variants available                  | **Core, Classic & XT**     | Core only¹  | **Core & Unlimited** |
-| proper packaging                    | **yes**                    | no          | no                   |
-| SELinux support                     | **yes**                    | no          | no                   |
+| recipe:                             | package                | binary               | source               |
+| :---                                | :---:                  | :---:                | :---:                |
+| support most distributions          | only RHEL & CentOS     | **yes**              | **yes**              |
+| support ARM and other architectures | only x86_64            | only x86_64          | **yes**              |
+| variants available                  | **Core, Classic & XT** | **Core & Unlimited** | **Core & Unlimited** |
+| proper packaging                    | **yes**                | no                   | no                   |
+| SELinux support                     | **yes**                | no                   | no                   |
 
-¹ Pull request welcomed.
+The matrix of available configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
 
 ### `bitcoin::package` recipe
 
@@ -35,9 +35,7 @@ You can run a Bitcoin fork/variant like this:
 
 ```
     "bitcoin": {
-      "package": {
-        "variant": "classic"
-      }
+      "variant": "unlimited"
     }
 ```
 
@@ -45,11 +43,11 @@ The valid variants are `core` (default), `unlimited`, `classic` and `xt`.
 
 ### `bitcoin::binary` recipe
 
-Downloads the official binary from https://bitcoin.org/ and copies it along with an systemd service script.
+Downloads the binary and copies it along with an systemd service script.
 
 ### `bitcoin::source` recipe
 
-Downloads the official release from https://github.com/bitcoin/bitcoin/releases and compiles it along with an systemd service script.
+Downloads the release from GitHub and compiles it along with an systemd service script.
 
 
 License

@@ -5,29 +5,39 @@
 
 include_recipe "bitcoin::_common"
 
-variant = node['bitcoin']['source']['variant']
-raise "Valid variants are core and unlimited." unless %w(core unlimited).include?(variant)
-
-name = "bitcoin-#{variant}-#{node['bitcoin']['source'][variant]['version']}"
-
-# install dependencies
 package node['bitcoin']['source']['dependencies'].fetch(node['platform_family'])
 
-# download the Bitcoin source code
-remote_file "/usr/src/#{name}.tar.gz" do
-  source node['bitcoin']['source'][variant]['url']
-  checksum node['bitcoin']['source'][variant]['checksum']
+directory File.dirname(node['bitcoin']['archive_path']) do
+  owner node['bitcoin']['user']
+  group node['bitcoin']['user']
+  mode "0700"
+end
+
+remote_file node['bitcoin']['archive_path'] do
+  source node['bitcoin']['source']['url'][node['bitcoin']['variant']]
+  checksum node['bitcoin']['source']['checksum'][node['bitcoin']['variant']]
   action :create_if_missing
   notifies :run, "bash[compile_and_install_bitcoin]", :immediately
 end
 
-# compile and install Bitcoin
 bash "compile_and_install_bitcoin" do
-  cwd "/usr/src"
-  creates node['bitcoin']['source']['bitcoind']
+  cwd File.dirname(node['bitcoin']['archive_path'])
+  creates node['bitcoin']['bitcoind']
   code <<-EOH
-    test -d #{name} || (mkdir #{name} && tar xf #{name}.tar.gz -C #{name} --strip-components=1)
-    (cd #{name} && ./autogen.sh && ./configure #{node['bitcoin']['source']['configure_options']} && make #{node['bitcoin']['source']['make_options']} && strip src/bitcoind && make install)
+    rm -rf #{node['bitcoin']['extract_path']}
+    mkdir -p #{node['bitcoin']['extract_path']}
+    tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
+    cd #{node['bitcoin']['extract_path']}
+    ./autogen.sh
+    ./configure #{node['bitcoin']['source']['configure_options']}
+    make #{node['bitcoin']['source']['make_options']}
+    strip src/bitcoind
+    strip src/bitcoin-cli
+    make install
+    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 src/bitcoind #{node['bitcoin']['bitcoind']}
+    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 src/bitcoin-cli #{node['bitcoin']['bitcoin_cli']}
+    ln -svf #{node['bitcoin']['bitcoind']} /bin/
+    ln -svf #{node['bitcoin']['bitcoin_cli']} /bin/
   EOH
 end
 

@@ -3,4 +3,4 @@
 # Recipe:: default
 #
 
-raise "bitcoin::default is a NOOP"
+raise "bitcoin::default does nothing"

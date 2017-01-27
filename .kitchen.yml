@@ -1,0 +1,17 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: <%= ENV["KITCHEN_PLATFORM"] %>
+
+suites:
+  - name: default
+    run_list:
+      - recipe[bitcoin::<%= ENV["KITCHEN_RECIPE"] %>]
+    attributes:
+      bitcoin:
+        variant: <%= ENV["KITCHEN_VARIANT"] %>

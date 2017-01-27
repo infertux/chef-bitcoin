@@ -1,6 +1,11 @@
 require 'rubocop/rake_task'
 require 'foodcritic'
 
+if ENV["KITCHEN_PLATFORM"]
+  require 'kitchen/rake_tasks'
+  Kitchen::RakeTasks.new
+end
+
 namespace :style do
   desc 'Run Ruby style checks'
   RuboCop::RakeTask.new(:ruby)

@@ -5,45 +5,29 @@
 
 include_recipe "bitcoin::_common"
 
-archive_file = "bitcoin-#{node['bitcoin']['binary']['version']}-linux64.tar.gz"
-archive_path = "#{Chef::Config['file_cache_path']}/bitcoin/#{archive_file}"
-extract_path = "#{Chef::Config['file_cache_path']}/bitcoin/bitcoin-#{node['bitcoin']['binary']['version']}"
-binary_path  = "#{node['bitcoin']['home']}/#{node['bitcoin']['binary']['bitcoind']}"
-
-remote_file archive_path do
-  source "https://bitcoin.org/bin/#{node['bitcoin']['binary']['version']}/#{archive_file}"
-  owner node['bitcoin']['user']
-  group node['bitcoin']['user']
-  mode "0400"
-  not_if { ::File.exist?(archive_path) }
-end
-
-execute "verify checksum" do
-  cwd ::File.dirname(archive_path)
-  command %(echo "#{node['bitcoin']['binary']['checksum']}  #{archive_file}" | sha256sum -c -)
-end
-
-directory ::File.dirname(binary_path) do
+directory File.dirname(node['bitcoin']['archive_path']) do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
   mode "0700"
-  recursive true
 end
 
-bash "extract archive" do
-  cwd ::File.dirname(archive_path)
+remote_file node['bitcoin']['archive_path'] do
+  source node['bitcoin']['binary']['url'][node['bitcoin']['variant']]
+  checksum node['bitcoin']['binary']['checksum'][node['bitcoin']['variant']]
+end
+
+bash "install_bitcoin" do
+  cwd File.dirname(node['bitcoin']['archive_path'])
+  creates node['bitcoin']['bitcoind']
   code <<-EOH
-    rm -rf #{extract_path}
-    mkdir -p #{extract_path}
-    tar xf #{archive_file} -C #{extract_path}
-    cp #{extract_path}/*/bin/64/bitcoind #{binary_path} # FIXME: don't hard-code "64"
+    rm -rf #{node['bitcoin']['extract_path']}
+    mkdir -p #{node['bitcoin']['extract_path']}
+    tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
+    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 #{node['bitcoin']['extract_path']}/bin/bitcoind #{node['bitcoin']['bitcoind']}
+    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 #{node['bitcoin']['extract_path']}/bin/bitcoin-cli #{node['bitcoin']['bitcoin_cli']}
+    ln -svf #{node['bitcoin']['bitcoind']} /bin/
+    ln -svf #{node['bitcoin']['bitcoin_cli']} /bin/
   EOH
-end
-
-file binary_path do
-  owner node['bitcoin']['user']
-  group node['bitcoin']['user']
-  mode "0500"
 end
 
 include_recipe "bitcoin::_systemd"
