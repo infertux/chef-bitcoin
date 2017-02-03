@@ -49,6 +49,7 @@ Downloads the binary and copies it along with an systemd service script.
 
 Downloads the release from GitHub and compiles it along with an systemd service script.
 
+Caution: you'll need at least 1 GB of free RAM to compile it (setting `make_options` to `-j1` can help too).
 
 License
 -------

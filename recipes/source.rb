@@ -23,8 +23,8 @@ end
 bash "compile_and_install_bitcoin" do
   cwd File.dirname(node['bitcoin']['archive_path'])
   creates node['bitcoin']['bitcoind']
+  flags "-eux"
   code <<-EOH
-    rm -rf #{node['bitcoin']['extract_path']}
     mkdir -p #{node['bitcoin']['extract_path']}
     tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
     cd #{node['bitcoin']['extract_path']}
@@ -38,6 +38,7 @@ bash "compile_and_install_bitcoin" do
     install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 src/bitcoin-cli #{node['bitcoin']['bitcoin_cli']}
     ln -svf #{node['bitcoin']['bitcoind']} /bin/
     ln -svf #{node['bitcoin']['bitcoin_cli']} /bin/
+    rm -rf #{node['bitcoin']['extract_path']}
   EOH
 end
 
