@@ -17,13 +17,13 @@ Usage
 
 ### Comparison table
 
-| recipe:                             | package                | binary               | source               |
-| :---                                | :---:                  | :---:                | :---:                |
-| support most distributions          | only RHEL & CentOS     | **yes**              | **yes**              |
-| support ARM and other architectures | only x86_64            | only x86_64          | **yes**              |
-| variants available                  | **Core, Classic & XT** | **Core & Unlimited** | **Core & Unlimited** |
-| proper packaging                    | **yes**                | no                   | no                   |
-| SELinux support                     | **yes**                | no                   | no                   |
+| recipe:                             | package                | binary                        | source                        |
+| :---                                | :---:                  | :---:                         | :---:                         |
+| support most distributions          | only RHEL & CentOS     | **yes**                       | **yes**                       |
+| support ARM and other architectures | only x86_64            | only x86_64                   | **yes**                       |
+| variants available                  | **Core, Classic & XT** | **Core, Unlimited & Classic** | **Core, Unlimited & Classic** |
+| proper packaging                    | **yes**                | no                            | no                            |
+| SELinux support                     | **yes**                | no                            | no                            |
 
 The matrix of available configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
 
