@@ -22,7 +22,7 @@ default['bitcoin']['checkblocks'] = 288 # NOTE: this is the default, you might w
 # 'binary' recipe
 
 default['bitcoin']['binary']['version']['core']       = '0.13.2'
-default['bitcoin']['binary']['version']['unlimited']  = '1.0.0'
+default['bitcoin']['binary']['version']['unlimited']  = '1.0.0.1'
 default['bitcoin']['binary']['version']['classic']    = '1.2.0'
 default['bitcoin']['binary']['url']['core']           = "https://bitcoin.org/bin/bitcoin-core-#{node['bitcoin']['binary']['version']['core']}/bitcoin-#{node['bitcoin']['binary']['version']['core']}-x86_64-linux-gnu.tar.gz"
 default['bitcoin']['binary']['url']['unlimited']      = "https://www.bitcoinunlimited.info/downloads/bitcoinUnlimited-#{node['bitcoin']['binary']['version']['unlimited']}-linux64.tar.gz"
