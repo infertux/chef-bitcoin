@@ -26,7 +26,7 @@ script "compile_and_install_bitcoin" do
   flags "-eux"
   code <<-EOH
     mkdir -p #{node['bitcoin']['extract_path']}
-    tar xf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
+    tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
     cd #{node['bitcoin']['extract_path']}
     ./autogen.sh
     ./configure #{node['bitcoin']['source']['configure_options']}

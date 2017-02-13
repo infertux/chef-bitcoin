@@ -40,4 +40,4 @@ matrix:
     - rvm: ruby-head
 script:
   - bundle exec rake
-  - test -z "$KITCHEN_PLATFORM" || bundle exec rake kitchen:all
+  - test -z "$KITCHEN_PLATFORM" || travis_wait 30 bundle exec rake kitchen:all
