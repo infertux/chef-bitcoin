@@ -6,4 +6,6 @@ sendfreetransactions=1
 txindex=1 # needed for ElectrumX server
 mempoolreplacement=0 # no RBF
 par=-1
-#maxconnections=50
+#maxconnections=50 # set to limit bandwidth usage
+#dbcache=500 # set if you have 4+ GB RAM
+#prune=20000 # set if you have low disk space (in MB)

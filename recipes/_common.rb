@@ -5,7 +5,7 @@
 
 user node['bitcoin']['user'] do
   home node['bitcoin']['home']
-  shell "/bin/bash"
+  shell "/bin/sh"
   manage_home true
 end
 

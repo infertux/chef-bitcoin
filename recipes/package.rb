@@ -40,5 +40,6 @@ end
 
 service "bitcoind" do
   provider Chef::Provider::Service::Systemd
-  # action [:enable] # FIXME: systemd isn't working with Docker
+  action [:enable]
+  only_if "test -f /bin/systemctl && /bin/systemctl"
 end

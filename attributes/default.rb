@@ -59,5 +59,8 @@ default['bitcoin']['source']['dependencies']['rhel'] = %w(
   gcc-c++ libtool make autoconf automake openssl-devel libevent-devel
   boost-devel
 )
+default['bitcoin']['source']['dependencies']['freebsd'] = %w(
+  autoconf automake libtool pkgconf gmake boost-all openssl
+).join(' ')
 default['bitcoin']['source']['configure_options'] = "--with-gui=no --disable-wallet --without-miniupnpc --disable-zmq --disable-tests --prefix=#{node['bitcoin']['prefix']}"
-default['bitcoin']['source']['make_options'] = "-j#{node['cpu']['total']}"
+default['bitcoin']['source']['make_options'] = '-j1'
