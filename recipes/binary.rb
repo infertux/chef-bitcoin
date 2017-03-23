@@ -18,8 +18,8 @@ remote_file node['bitcoin']['archive_path'] do
 end
 
 script "install_bitcoin" do
+  action :nothing
   cwd File.dirname(node['bitcoin']['archive_path'])
-  creates node['bitcoin']['bitcoind']
   interpreter "sh"
   flags "-eux"
   code <<-EOH
