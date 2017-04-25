@@ -21,15 +21,15 @@ default['bitcoin']['checkblocks'] = 288 # NOTE: this is the default, you might w
 
 # 'binary' recipe
 
-default['bitcoin']['binary']['version']['core']       = '0.14.0'
-default['bitcoin']['binary']['version']['unlimited']  = '1.0.1.1'
-default['bitcoin']['binary']['version']['classic']    = '1.2.3'
+default['bitcoin']['binary']['version']['core']       = '0.14.1'
+default['bitcoin']['binary']['version']['unlimited']  = '1.0.1.4'
+default['bitcoin']['binary']['version']['classic']    = '1.2.5'
 default['bitcoin']['binary']['url']['core']           = "https://bitcoin.org/bin/bitcoin-core-#{node['bitcoin']['binary']['version']['core']}/bitcoin-#{node['bitcoin']['binary']['version']['core']}-x86_64-linux-gnu.tar.gz"
 default['bitcoin']['binary']['url']['unlimited']      = "https://www.bitcoinunlimited.info/downloads/bitcoinUnlimited-#{node['bitcoin']['binary']['version']['unlimited']}-linux64.tar.gz"
 default['bitcoin']['binary']['url']['classic']        = "https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v#{node['bitcoin']['binary']['version']['classic']}/bitcoin-#{node['bitcoin']['binary']['version']['classic']}-linux64.tar.gz"
-default['bitcoin']['binary']['checksum']['core']      = '06e6ceeb687e784e9aaad45e9407c7eed5f7e9c9bbe44083179287f54f0f9f2b'
-default['bitcoin']['binary']['checksum']['unlimited'] = '68439e21ff6806af2acb64b3d4b60ef9bb47d82ba68fce98752de6cc9d1f4502'
-default['bitcoin']['binary']['checksum']['classic']   = '9eaa9a2ad72199f314a558b24424575084368ce5866bfbbb1a85429cd8fe67f8'
+default['bitcoin']['binary']['checksum']['core']      = '0c6920a9f3181a95ca029fdac5342b5702569ee441ec2128d19051f281683058'
+default['bitcoin']['binary']['checksum']['unlimited'] = 'f82b98f552ae49c7bca011325a5d9374425e78d91c1baac02cba64b358beb563'
+default['bitcoin']['binary']['checksum']['classic']   = '91438d75349814e49d54fdcbce2af42ebf561048688cecf59fbd293bbb1ef77c'
 
 # 'package' recipe
 
@@ -40,15 +40,15 @@ default['bitcoin']['package']['repo_checksum']['fedora'] = 'ab6f4fd8f5f7875303e6
 
 # 'source' recipe
 
-default['bitcoin']['source']['version']['core']       = 'v0.14.0'
-default['bitcoin']['source']['version']['unlimited']  = '1.0.1.3'
-default['bitcoin']['source']['version']['classic']    = '1.2.3'
+default['bitcoin']['source']['version']['core']       = 'v0.14.1'
+default['bitcoin']['source']['version']['unlimited']  = '1.0.1.4'
+default['bitcoin']['source']['version']['classic']    = '1.2.5'
 default['bitcoin']['source']['url']['core']           = "https://github.com/bitcoin/bitcoin/archive/#{node['bitcoin']['source']['version']['core']}.tar.gz"
 default['bitcoin']['source']['url']['unlimited']      = "https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/#{node['bitcoin']['source']['version']['unlimited']}.tar.gz"
 default['bitcoin']['source']['url']['classic']        = "https://github.com/bitcoinclassic/bitcoinclassic/archive/v#{node['bitcoin']['source']['version']['classic']}.tar.gz"
-default['bitcoin']['source']['checksum']['core']      = '3a1fb34cdb16087e33630b20d48205430fb43e61207566f3ed1e45203ad8ec0c'
-default['bitcoin']['source']['checksum']['unlimited'] = 'e9fe8f7dc47a35ea52d90b07eb848cb536d7730776fb4cd3563ad24165e8d987'
-default['bitcoin']['source']['checksum']['classic']   = '3eef89d633f503749267f0ff64135d7e8bc187b8fd78c3d849ec19a2b0c4d4ff'
+default['bitcoin']['source']['checksum']['core']      = '81a121526d5f77626a4f3d5ef2b390615e937e0aa9dc077c38c935bd7ce65d85'
+default['bitcoin']['source']['checksum']['unlimited'] = '4aaa7dd1a5cd6e72f96ac26a05900a21f96d08ee694493bdc7f71d9b608789aa'
+default['bitcoin']['source']['checksum']['classic']   = '900218eb2cd40c96a357a601e17fc6eacc91970f369761462de5a695c20701d5'
 default['bitcoin']['source']['dependencies']['debian'] = %w(
   build-essential libtool autoconf pkg-config libssl-dev libevent-dev
   libboost-system-dev libboost-filesystem-dev libboost-chrono-dev
