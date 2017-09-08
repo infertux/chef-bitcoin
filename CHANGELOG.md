@@ -1,9 +1,10 @@
 Bitcoin CHANGELOG
 =================
 
-## unreleased
+## v1.5.0
 
-- Add Bitcoin ABC
+- Add Bitcoin ABC.
+- Add support for FreeBSD.
 - Update Bitcoin versions and dependencies.
 
 ## v1.4.0
