@@ -17,13 +17,13 @@ Usage
 
 ### Comparison table
 
-| recipe:                             | package                | binary                        | source                        |
-| :---                                | :---:                  | :---:                         | :---:                         |
-| support most distributions          | only RHEL & CentOS     | **yes**                       | **yes**                       |
-| support ARM and other architectures | only x86_64            | only x86_64                   | **yes**                       |
-| variants available                  | **Core, Classic & XT** | **Core, Unlimited & Classic** | **Core, Unlimited & Classic** |
-| proper packaging                    | **yes**                | no                            | no                            |
-| SELinux support                     | **yes**                | no                            | no                            |
+| recipe:                             | package                | binary                              | source                              |
+| :---                                | :---:                  | :---:                               | :---:                               |
+| support most distributions          | only RHEL & CentOS     | **yes**                             | **yes**                             |
+| support ARM and other architectures | only x86_64            | only x86_64                         | **yes**                             |
+| variants available                  | **Core, Classic & XT** | **Core, Unlimited, Classic & ABC ** | **Core, Unlimited, Classic & ABC ** |
+| proper packaging                    | **yes**                | no                                  | no                                  |
+| SELinux support                     | **yes**                | no                                  | no                                  |
 
 The matrix of available configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
 
@@ -39,7 +39,7 @@ You can run a Bitcoin fork/variant like this:
     }
 ```
 
-The valid variants are `core` (default), `unlimited`, `classic` and `xt`.
+The valid variants are `core` (default), `unlimited`, `classic`, `abc` and `xt`.
 
 ### `bitcoin::binary` recipe
 

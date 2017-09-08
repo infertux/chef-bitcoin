@@ -1,6 +1,11 @@
 Bitcoin CHANGELOG
 =================
 
+## unreleased
+
+- Add Bitcoin ABC
+- Update Bitcoin versions and dependencies.
+
 ## v1.4.0
 
 - Update Bitcoin versions and dependencies.

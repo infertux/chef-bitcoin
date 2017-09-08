@@ -7,6 +7,8 @@ provisioner:
 
 platforms:
   - name: <%= ENV["KITCHEN_PLATFORM"] %>
+    driver_config:
+      use_sudo: false
 
 suites:
   - name: default
