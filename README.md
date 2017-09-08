@@ -21,7 +21,7 @@ Usage
 | :---                                | :---:                  | :---:                               | :---:                               |
 | support most distributions          | only RHEL & CentOS     | **yes**                             | **yes**                             |
 | support ARM and other architectures | only x86_64            | only x86_64                         | **yes**                             |
-| variants available                  | **Core, Classic & XT** | **Core, Unlimited, Classic & ABC ** | **Core, Unlimited, Classic & ABC ** |
+| variants available                  | Core, Classic & XT     | **Core, Unlimited, Classic & ABC**  | **Core, Unlimited, Classic & ABC**  |
 | proper packaging                    | **yes**                | no                                  | no                                  |
 | SELinux support                     | **yes**                | no                                  | no                                  |
 
