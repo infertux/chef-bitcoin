@@ -5,7 +5,7 @@
 
 # common settings
 
-default['bitcoin']['variant'] = 'core' # possible variants: core, unlimited, classic, xt
+default['bitcoin']['variant'] = nil # possible variants: core, unlimited, classic, abc, xt
 default['bitcoin']['user'] = 'bitcoin'
 default['bitcoin']['home'] = "/home/#{node['bitcoin']['user']}"
 default['bitcoin']['conf_dir'] = "#{node['bitcoin']['home']}/.bitcoin"

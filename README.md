@@ -39,7 +39,7 @@ You can run a Bitcoin fork/variant like this:
     }
 ```
 
-The valid variants are `core` (default), `unlimited`, `classic`, `abc` and `xt`.
+The valid variants are `core`, `unlimited`, `classic`, `abc` and `xt`.
 
 ### `bitcoin::binary` recipe
 
