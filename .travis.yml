@@ -4,17 +4,14 @@ dist: trusty
 group: edge # https://github.com/travis-ci/travis-ci/issues/5448
 services:
   - docker
-before_install: gem update --system --no-doc # https://github.com/sickill/rainbow/issues/49
-rvm: 2.4.1
+rvm: 2.4.3
 matrix:
   exclude:
-    - rvm: 2.4.1
+    - rvm: 2.4.3
   include:
     - rvm: ruby-head
       env: BUNDLE_WITHOUT=test
-    - rvm: 2.2.7
-      env: BUNDLE_WITHOUT=test
-    - rvm: 2.3.4
+    - rvm: 2.3.6
       env: BUNDLE_WITHOUT=test
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary KITCHEN_VARIANT=core
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source KITCHEN_VARIANT=core

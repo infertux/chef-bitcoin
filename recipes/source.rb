@@ -24,7 +24,7 @@ script "compile_and_install_bitcoin" do
   cwd File.dirname(node['bitcoin']['archive_path'])
   interpreter "sh"
   flags "-eux"
-  code <<-EOH
+  code <<-SCRIPT
     mkdir -p #{node['bitcoin']['extract_path']}
     tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
     cd #{node['bitcoin']['extract_path']}
@@ -40,7 +40,7 @@ script "compile_and_install_bitcoin" do
     ln -svf #{node['bitcoin']['bitcoind']} /bin/
     ln -svf #{node['bitcoin']['bitcoin_cli']} /bin/
     rm -rf #{node['bitcoin']['extract_path']}
-  EOH
+  SCRIPT
 end
 
 package node['bitcoin']['source']['dependencies'].fetch(node['platform_family']) do
