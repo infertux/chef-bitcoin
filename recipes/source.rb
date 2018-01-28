@@ -32,13 +32,11 @@ script "compile_and_install_bitcoin" do
     ./configure #{node['bitcoin']['source']['configure_options']}
     command -v gmake && MAKE=gmake || MAKE=make
     $MAKE #{node['bitcoin']['source']['make_options']}
-    strip src/bitcoind
-    strip src/bitcoin-cli
     $MAKE install
-    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 src/bitcoind #{node['bitcoin']['bitcoind']}
-    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 src/bitcoin-cli #{node['bitcoin']['bitcoin_cli']}
-    ln -svf #{node['bitcoin']['bitcoind']} /bin/
-    ln -svf #{node['bitcoin']['bitcoin_cli']} /bin/
+    install --strip -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 src/#{node['bitcoin']['binary_name']} #{node['bitcoin']['binary_path']}
+    install --strip -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 src/#{node['bitcoin']['binary_cli_name']} #{node['bitcoin']['binary_cli_path']}
+    ln -svf #{node['bitcoin']['binary_path']} /bin/
+    ln -svf #{node['bitcoin']['binary_cli_path']} /bin/
     rm -rf #{node['bitcoin']['extract_path']}
   SCRIPT
 end

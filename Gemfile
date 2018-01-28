@@ -11,5 +11,6 @@ group :test do
 end
 
 group :development do
+  gem 'berkshelf'
   gem 'rake'
 end

@@ -13,3 +13,5 @@ supports 'debian'
 supports 'ubuntu'
 supports 'centos'
 supports 'freebsd'
+
+depends 'golang'

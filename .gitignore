@@ -1,2 +1,18 @@
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
 .kitchen/
-.kitchen.local.yml
+pkg/
+
+# Berkshelf
+.vagrant
+/cookbooks
+Berksfile.lock
+
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*

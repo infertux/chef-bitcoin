@@ -1,0 +1,12 @@
+[Unit]
+Description=btcd daemon
+After=network.target
+
+[Service]
+User=<%= @user %>
+Group=<%= @user %>
+ExecStart=/bin/btcd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

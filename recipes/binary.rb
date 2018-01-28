@@ -25,10 +25,10 @@ script "install_bitcoin" do
   code <<-SCRIPT
     mkdir -p #{node['bitcoin']['extract_path']}
     tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
-    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 #{node['bitcoin']['extract_path']}/bin/bitcoind #{node['bitcoin']['bitcoind']}
-    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 #{node['bitcoin']['extract_path']}/bin/bitcoin-cli #{node['bitcoin']['bitcoin_cli']}
-    ln -svf #{node['bitcoin']['bitcoind']} /bin/
-    ln -svf #{node['bitcoin']['bitcoin_cli']} /bin/
+    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 #{node['bitcoin']['extract_path']}/bin/#{node['bitcoin']['binary_name']} #{node['bitcoin']['binary_path']}
+    install -o #{node['bitcoin']['user']} -g #{node['bitcoin']['user']} -m 0500 #{node['bitcoin']['extract_path']}/bin/bitcoin-cli #{node['bitcoin']['binary_cli_path']}
+    ln -svf #{node['bitcoin']['binary_path']} /bin/
+    ln -svf #{node['bitcoin']['binary_cli_path']} /bin/
     rm -rf #{node['bitcoin']['extract_path']}
   SCRIPT
 end

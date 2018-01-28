@@ -3,7 +3,7 @@ driver:
   name: docker
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
 
 platforms:
   - name: <%= ENV["KITCHEN_PLATFORM"] %>

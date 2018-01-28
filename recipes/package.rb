@@ -37,7 +37,7 @@ package "#{variant}-server" do
   end
 end
 
-service "bitcoind" do
+service node['bitcoin']['binary_name'] do
   provider Chef::Provider::Service::Systemd
   action [:enable]
   only_if "test -f /bin/systemctl && /bin/systemctl"

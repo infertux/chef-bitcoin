@@ -8,7 +8,7 @@ Group=<%= @user %>
 
 Type=forking
 PIDFile=<%= @conf_dir %>/bitcoind.pid
-ExecStart=<%= @bitcoind %> -daemon -pid=<%= @conf_dir %>/bitcoind.pid
+ExecStart=<%= @binary_path %> -daemon -pid=<%= @conf_dir %>/bitcoind.pid
 
 Restart=always
 PrivateTmp=true
