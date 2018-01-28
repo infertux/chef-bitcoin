@@ -21,7 +21,7 @@ Usage
 | :---                                | :---:                  | :---:                               | :---:                               |
 | support most distributions          | only RHEL & CentOS     | **yes**                             | **yes**                             |
 | support ARM and other architectures | only x86_64            | only x86_64                         | **yes**                             |
-| variants available                  | Core, Classic & XT     | **Core, Unlimited, Classic & ABC**  | **Core, Unlimited, Classic & ABC**  |
+| variants available                  | Core & XT              | **Core, Unlimited & ABC**           | **Core, Unlimited & ABC**           |
 | proper packaging                    | **yes**                | no                                  | no                                  |
 | SELinux support                     | **yes**                | no                                  | no                                  |
 
@@ -39,7 +39,7 @@ You can run a Bitcoin fork/variant like this:
     }
 ```
 
-The valid variants are `core`, `unlimited`, `classic`, `abc` and `xt`.
+The valid variants are `core`, `unlimited`, `abc` and `xt`.
 
 ### `bitcoin::binary` recipe
 

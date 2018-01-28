@@ -25,9 +25,8 @@ end
 variant = \
   case node['bitcoin']['variant']
   when "core" then "bitcoin"
-  when "classic" then "bitcoinclassic"
   when "xt" then "bitcoinxt"
-  else raise "Valid variants are core, classic and xt."
+  else raise "Valid variants are core and xt."
   end
 
 package "#{variant}-server" do

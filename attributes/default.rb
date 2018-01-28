@@ -5,7 +5,7 @@
 
 # common settings
 
-default['bitcoin']['variant'] = nil # possible variants: core, unlimited, classic, abc, xt
+default['bitcoin']['variant'] = nil # possible variants: core, unlimited, abc, xt
 default['bitcoin']['user'] = 'bitcoin'
 default['bitcoin']['home'] = "/home/#{node['bitcoin']['user']}"
 default['bitcoin']['conf_dir'] = "#{node['bitcoin']['home']}/.bitcoin"
@@ -21,18 +21,15 @@ default['bitcoin']['checkblocks'] = 288 # NOTE: this is the default, you might w
 
 # 'binary' recipe
 
-default['bitcoin']['binary']['version']['core']       = '0.14.2'
+default['bitcoin']['binary']['version']['core']       = '0.15.1'
 default['bitcoin']['binary']['version']['unlimited']  = '1.0.3.0'
-default['bitcoin']['binary']['version']['classic']    = '1.3.6'
-default['bitcoin']['binary']['version']['abc']        = '0.15.0'
+default['bitcoin']['binary']['version']['abc']        = '0.16.2'
 default['bitcoin']['binary']['url']['core']           = "https://bitcoin.org/bin/bitcoin-core-#{node['bitcoin']['binary']['version']['core']}/bitcoin-#{node['bitcoin']['binary']['version']['core']}-x86_64-linux-gnu.tar.gz"
 default['bitcoin']['binary']['url']['unlimited']      = "https://www.bitcoinunlimited.info/downloads/bitcoinUnlimited-#{node['bitcoin']['binary']['version']['unlimited']}-linux64.tar.gz"
-default['bitcoin']['binary']['url']['classic']        = "https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v#{node['bitcoin']['binary']['version']['classic']}/bitcoin-#{node['bitcoin']['binary']['version']['classic']}-linux64.tar.gz"
 default['bitcoin']['binary']['url']['abc']            = "https://download.bitcoinabc.org/#{node['bitcoin']['binary']['version']['abc']}/linux/bitcoin-abc-#{node['bitcoin']['binary']['version']['abc']}-x86_64-linux-gnu.tar.gz"
-default['bitcoin']['binary']['checksum']['core']      = '20acc6d5d5e0c4140387bc3445b8b3244d74c1c509bd98f62b4ee63bec31a92b'
+default['bitcoin']['binary']['checksum']['core']      = '387c2e12c67250892b0814f26a5a38f837ca8ab68c86af517f975a2a2710225b'
 default['bitcoin']['binary']['checksum']['unlimited'] = 'a6658bac22f082539969a243943c7d1a865abd40cdfe39465ff82b4eba387b22'
-default['bitcoin']['binary']['checksum']['classic']   = '311c636f400d84b1bc615f6c1a1b48837d1dd04bd78615a7e0b7bd3c86d53aea'
-default['bitcoin']['binary']['checksum']['abc']       = 'de8ec283d6d3bb15545b39dc07f3207d7502d51dd98cfeac79e8d78462808cfc'
+default['bitcoin']['binary']['checksum']['abc']       = '5eeadea9c23069e08d18e0743f4a86a9774db7574197440c6d795fad5cad2084'
 
 # 'package' recipe
 
@@ -43,18 +40,15 @@ default['bitcoin']['package']['repo_checksum']['fedora'] = 'ab6f4fd8f5f7875303e6
 
 # 'source' recipe
 
-default['bitcoin']['source']['version']['core']       = 'v0.14.2'
+default['bitcoin']['source']['version']['core']       = 'v0.15.1'
 default['bitcoin']['source']['version']['unlimited']  = '1.0.3.0'
-default['bitcoin']['source']['version']['classic']    = '1.3.6'
-default['bitcoin']['source']['version']['abc']        = '0.15.0'
+default['bitcoin']['source']['version']['abc']        = '0.16.2'
 default['bitcoin']['source']['url']['core']           = "https://github.com/bitcoin/bitcoin/archive/#{node['bitcoin']['source']['version']['core']}.tar.gz"
 default['bitcoin']['source']['url']['unlimited']      = "https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/v#{node['bitcoin']['source']['version']['unlimited']}.tar.gz"
-default['bitcoin']['source']['url']['classic']        = "https://github.com/bitcoinclassic/bitcoinclassic/archive/v#{node['bitcoin']['source']['version']['classic']}.tar.gz"
 default['bitcoin']['source']['url']['abc']            = "https://download.bitcoinabc.org/#{node['bitcoin']['binary']['version']['abc']}/linux/src/bitcoin-abc-#{node['bitcoin']['binary']['version']['abc']}.tar.gz"
-default['bitcoin']['source']['checksum']['core']      = 'e0ac23f01a953fcc6290c96799deeffb32aa76ca8e216c564d20c18e75a25219'
-default['bitcoin']['source']['checksum']['unlimited'] = '27f4d0b6c2148aefd981479f15d950f58709a42639a9ebf8cefee80b6a82ec0a'
-default['bitcoin']['source']['checksum']['classic']   = 'b5ad0706ce62fd75fd16c0c1c019b1e2e644143b92f1a80542f0c84da0d33cf6'
-default['bitcoin']['source']['checksum']['abc']       = 'ae1efb25068fa6ae910650b3d84a308e395d55264e95dc6d7f1d2e939bc9219f'
+default['bitcoin']['source']['checksum']['core']      = '98b3a98a67054123bef6714e4035e18f9250a1b6d63829258ad057906e75d8b1'
+default['bitcoin']['source']['checksum']['unlimited'] = '9c35c5391ffe5f0b0234de3133cd673729a88f96217d6e42521f6b8be9cfc533'
+default['bitcoin']['source']['checksum']['abc']       = '71c726e24bb891ccd13c51c409844463b800afa08be8eb79f427766fc82fe1ab'
 default['bitcoin']['source']['dependencies']['debian'] = %w[
   build-essential libtool autoconf pkg-config libssl-dev libevent-dev
   libboost-system-dev libboost-filesystem-dev libboost-chrono-dev
