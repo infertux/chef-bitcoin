@@ -4,14 +4,14 @@ dist: trusty
 group: edge # https://github.com/travis-ci/travis-ci/issues/5448
 services:
   - docker
-rvm: 2.4.3
+rvm: 2.5.0
 matrix:
   exclude:
-    - rvm: 2.4.3
+    - rvm: 2.5.0
   include:
     - rvm: ruby-head
       env: BUNDLE_WITHOUT=test
-    - rvm: 2.3.6
+    - rvm: 2.4.3
       env: BUNDLE_WITHOUT=test
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary KITCHEN_VARIANT=core
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source KITCHEN_VARIANT=core
