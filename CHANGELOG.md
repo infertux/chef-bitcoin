@@ -1,6 +1,12 @@
 Bitcoin CHANGELOG
 =================
 
+## v1.6.0
+
+- Add btcd.
+- Drop discontinued Bitcoin Classic.
+- Update Bitcoin versions and dependencies.
+
 ## v1.5.0
 
 - Add Bitcoin ABC.
