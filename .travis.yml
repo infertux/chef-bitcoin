@@ -4,14 +4,14 @@ dist: trusty
 group: edge # https://github.com/travis-ci/travis-ci/issues/5448
 services:
   - docker
-rvm: 2.5.0
+rvm: 2.5.1
 matrix:
   exclude:
-    - rvm: 2.5.0
+    - rvm: 2.5.1
   include:
     - rvm: ruby-head
       env: BUNDLE_WITHOUT=test
-    - rvm: 2.4.3
+    - rvm: 2.4.4
       env: BUNDLE_WITHOUT=test
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=core
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=core
@@ -40,5 +40,4 @@ matrix:
     - rvm: ruby-head
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc # build is currently broken: https://travis-ci.org/infertux/chef-bitcoin/jobs/334315828
 script:
-  - bundle exec rake
-  - test -z "$KITCHEN_PLATFORM" || travis_wait 30 bundle exec rake kitchen:all
+  - travis_wait 30 bundle exec rake
