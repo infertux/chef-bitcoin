@@ -3,4 +3,4 @@
 # Recipe:: default
 #
 
-raise "bitcoin::default does nothing"
+raise 'bitcoin::default does nothing'

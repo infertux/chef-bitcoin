@@ -3,25 +3,25 @@
 # Recipe:: binary
 #
 
-include_recipe "bitcoin::_common"
+include_recipe 'bitcoin::_common'
 
 directory File.dirname(node['bitcoin']['archive_path']) do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
-  mode "0700"
+  mode '0700'
 end
 
 remote_file node['bitcoin']['archive_path'] do
   source node['bitcoin']['binary']['url'][node['bitcoin']['variant']]
   checksum node['bitcoin']['binary']['checksum'][node['bitcoin']['variant']]
-  notifies :run, "script[install_bitcoin]", :immediately
+  notifies :run, 'script[install_bitcoin]', :immediately
 end
 
-script "install_bitcoin" do
+script 'install_bitcoin' do
   action :nothing
   cwd File.dirname(node['bitcoin']['archive_path'])
-  interpreter "sh"
-  flags "-eux"
+  interpreter 'sh'
+  flags '-eux'
   code <<-SCRIPT
     mkdir -p #{node['bitcoin']['extract_path']}
     tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
@@ -33,4 +33,4 @@ script "install_bitcoin" do
   SCRIPT
 end
 
-include_recipe "bitcoin::_systemd"
+include_recipe 'bitcoin::_systemd'

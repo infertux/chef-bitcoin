@@ -3,8 +3,8 @@
 # Recipe:: git
 #
 
-include_recipe "bitcoin::_common"
-include_recipe "bitcoin::_golang"
+include_recipe 'bitcoin::_common'
+include_recipe 'bitcoin::_golang'
 
 directory node['bitcoin']['go']['extract_path'][node['bitcoin']['variant']] do
   user node['bitcoin']['user']
@@ -14,14 +14,14 @@ end
 
 git node['bitcoin']['go']['extract_path'][node['bitcoin']['variant']] do
   repository node['bitcoin']['git']['url'][node['bitcoin']['variant']]
-  notifies :run, "script[compile_and_install_bitcoin]", :immediately
+  notifies :run, 'script[compile_and_install_bitcoin]', :immediately
 end
 
-script "compile_and_install_bitcoin" do
+script 'compile_and_install_bitcoin' do
   action :nothing
   cwd node['bitcoin']['go']['extract_path'][node['bitcoin']['variant']]
-  interpreter "sh"
-  flags "-eux"
+  interpreter 'sh'
+  flags '-eux'
   code <<-SCRIPT
     export GOPATH=#{node['bitcoin']['go']['gopath']}
     export GOBIN=#{node['bitcoin']['go']['gopath']}/bin
@@ -33,4 +33,4 @@ script "compile_and_install_bitcoin" do
   SCRIPT
 end
 
-include_recipe "bitcoin::_systemd"
+include_recipe 'bitcoin::_systemd'

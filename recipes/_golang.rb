@@ -7,7 +7,7 @@ node.default['go']['scm'] = false
 
 include_recipe 'golang::default'
 
-%w[/ /bin /src].each do |suffix|
+%w(/ /bin /src).each do |suffix|
   directory "#{node['bitcoin']['go']['gopath']}#{suffix}" do
     owner node['bitcoin']['user']
     group node['bitcoin']['group']

@@ -3,7 +3,7 @@
 # Recipe:: package
 #
 
-include_recipe "bitcoin::_common"
+include_recipe 'bitcoin::_common'
 
 repo_url = node['bitcoin']['package']['repo_url'][node['platform_family']]
 repo_file = ::File.basename(repo_url)
@@ -18,15 +18,15 @@ remote_file repo_path do
   checksum node['bitcoin']['package']['repo_checksum'][node['platform_family']]
 end
 
-package "bitcoin-release" do
+package 'bitcoin-release' do
   source repo_path
 end
 
 variant = \
   case node['bitcoin']['variant']
-  when "core" then "bitcoin"
-  when "xt" then "bitcoinxt"
-  else raise "Valid variants are core and xt."
+  when 'core' then 'bitcoin'
+  when 'xt' then 'bitcoinxt'
+  else raise 'Valid variants are core and xt.'
   end
 
 package "#{variant}-server" do
@@ -40,5 +40,5 @@ end
 service node['bitcoin']['binary_name'] do
   provider Chef::Provider::Service::Systemd
   action [:enable]
-  only_if "test -f /bin/systemctl && /bin/systemctl"
+  only_if 'test -f /bin/systemctl && /bin/systemctl'
 end

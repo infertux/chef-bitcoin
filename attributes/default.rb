@@ -36,7 +36,7 @@ default['bitcoin']['service_file'] = "/usr/lib/systemd/system/#{node['bitcoin'][
 default['bitcoin']['archive_file'] = "#{node['bitcoin']['variant']}.tar.gz"
 default['bitcoin']['archive_path'] = "#{Chef::Config['file_cache_path']}/bitcoin/#{node['bitcoin']['archive_file']}"
 default['bitcoin']['extract_path'] = "#{Chef::Config['file_cache_path']}/bitcoin/#{node['bitcoin']['variant']}"
-default['bitcoin']['prefix'] = "/usr/local"
+default['bitcoin']['prefix'] = '/usr/local'
 default['bitcoin']['binary_path'] = "#{node['bitcoin']['prefix']}/bin/#{node['bitcoin']['binary_name']}"
 default['bitcoin']['binary_cli_path'] = "#{node['bitcoin']['prefix']}/bin/#{node['bitcoin']['binary_cli_name']}"
 default['bitcoin']['checkblocks'] = 288 # NOTE: this is the default, you might want to decrease it with very low-end CPUs to get fast boot time
@@ -71,22 +71,22 @@ default['bitcoin']['source']['url']['abc']            = "https://download.bitcoi
 default['bitcoin']['source']['checksum']['core']      = '98b3a98a67054123bef6714e4035e18f9250a1b6d63829258ad057906e75d8b1'
 default['bitcoin']['source']['checksum']['unlimited'] = '9c35c5391ffe5f0b0234de3133cd673729a88f96217d6e42521f6b8be9cfc533'
 default['bitcoin']['source']['checksum']['abc']       = '71c726e24bb891ccd13c51c409844463b800afa08be8eb79f427766fc82fe1ab'
-default['bitcoin']['source']['dependencies']['debian'] = %w[
+default['bitcoin']['source']['dependencies']['debian'] = %w(
   build-essential libtool autoconf pkg-config libssl-dev libevent-dev
   libboost-system-dev libboost-filesystem-dev libboost-chrono-dev
   libboost-program-options-dev libboost-test-dev libboost-thread-dev
   libboost-system-dev libboost-test-dev libboost-thread-dev
-]
-default['bitcoin']['source']['dependencies']['rhel'] = %w[
+)
+default['bitcoin']['source']['dependencies']['rhel'] = %w(
   gcc-c++ libtool make autoconf automake openssl-devel libevent-devel
   boost-devel
-]
-default['bitcoin']['source']['dependencies']['freebsd'] = %w[
+)
+default['bitcoin']['source']['dependencies']['freebsd'] = %w(
   autoconf automake libtool pkgconf gmake boost-all openssl
-].join(' ')
+).join(' ')
 default['bitcoin']['source']['configure_options'] = "--with-gui=no --disable-wallet --without-miniupnpc --disable-zmq --disable-tests --prefix=#{node['bitcoin']['prefix']}"
 default['bitcoin']['source']['make_options'] = '-j1'
 
 # 'git' recipe
 
-default['bitcoin']['git']['url']['btcd'] = "https://github.com/btcsuite/btcd"
+default['bitcoin']['git']['url']['btcd'] = 'https://github.com/btcsuite/btcd'

@@ -1,8 +1,0 @@
-Metrics:
-  Enabled: false
-
-Style/CommentedKeyword:
-  Enabled: false
-
-Style/StringLiterals:
-  Enabled: false

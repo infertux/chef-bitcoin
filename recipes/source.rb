@@ -3,27 +3,27 @@
 # Recipe:: source
 #
 
-include_recipe "bitcoin::_common"
+include_recipe 'bitcoin::_common'
 
 package node['bitcoin']['source']['dependencies'].fetch(node['platform_family'])
 
 directory File.dirname(node['bitcoin']['archive_path']) do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
-  mode "0700"
+  mode '0700'
 end
 
 remote_file node['bitcoin']['archive_path'] do
   source node['bitcoin']['source']['url'][node['bitcoin']['variant']]
   checksum node['bitcoin']['source']['checksum'][node['bitcoin']['variant']]
-  notifies :run, "script[compile_and_install_bitcoin]", :immediately
+  notifies :run, 'script[compile_and_install_bitcoin]', :immediately
 end
 
-script "compile_and_install_bitcoin" do
+script 'compile_and_install_bitcoin' do
   action :nothing
   cwd File.dirname(node['bitcoin']['archive_path'])
-  interpreter "sh"
-  flags "-eux"
+  interpreter 'sh'
+  flags '-eux'
   code <<-SCRIPT
     mkdir -p #{node['bitcoin']['extract_path']}
     tar xvf #{node['bitcoin']['archive_path']} -C #{node['bitcoin']['extract_path']} --strip-components=1
@@ -45,4 +45,4 @@ package node['bitcoin']['source']['dependencies'].fetch(node['platform_family'])
   action :remove
 end
 
-include_recipe "bitcoin::_systemd"
+include_recipe 'bitcoin::_systemd'
