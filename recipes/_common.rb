@@ -4,7 +4,7 @@
 #
 
 unless node['bitcoin']['variant']
-  raise "You must select the variant you wish to install with `node['bitcoin']['variant'] = $variant'. Possible variants are core, unlimited, abc, xt and btcd."
+  raise "You must select the variant you wish to install with `node['bitcoin']['variant'] = $variant'. Possible variants are abc, bucash, core, unlimited, and xt."
 end
 
 user node['bitcoin']['user'] do

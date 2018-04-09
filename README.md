@@ -9,6 +9,7 @@ Requirements
 ------------
 
 ### network
+
 In order to actively contribute to the Bitcoin network, you will need to open your TCP port 8333.
 This cookbook does *not* make sure your port 8333 is open since this is very much dependant on your networking setup.
 
@@ -21,7 +22,7 @@ Usage
 | :---                                | :---:                  | :---:                               | :---:                               |
 | support most distributions          | only RHEL & CentOS     | **yes**                             | **yes**                             |
 | support ARM and other architectures | only x86_64            | only x86_64                         | **yes**                             |
-| variants available                  | Core & XT              | **Core, Unlimited & ABC**           | **Core, Unlimited & ABC**           |
+| variants available                  | Core & XT              | **ABC, Core & Unlimited (Cash)**    | **ABC, Core & Unlimited (Cash)**    |
 | proper packaging                    | **yes**                | no                                  | no                                  |
 | SELinux support                     | **yes**                | no                                  | no                                  |
 
@@ -35,11 +36,11 @@ You can run a Bitcoin fork/variant like this:
 
 ```
     "bitcoin": {
-      "variant": "unlimited"
+      "variant": "abc"
     }
 ```
 
-The valid variants are `abc`, `core`, `unlimited`, and `xt`.
+The valid variants are `abc`, `bucash`, `core`, `unlimited`, and `xt`.
 
 ### `bitcoin::binary` recipe
 
