@@ -17,13 +17,13 @@ Usage
 
 ### Comparison table
 
-| recipe:                             | package                | binary                              | source                              | git                   |
-| :---                                | :---:                  | :---:                               | :---:                               | :---:                 |
-| support most distributions          | only RHEL & CentOS     | **yes**                             | **yes**                             | **yes**               |
-| support ARM and other architectures | only x86_64            | only x86_64                         | **yes**                             | probably (not tested) |
-| variants available                  | Core & XT              | **Core, Unlimited & ABC**           | **Core, Unlimited & ABC**           | btcd                  |
-| proper packaging                    | **yes**                | no                                  | no                                  | no                    |
-| SELinux support                     | **yes**                | no                                  | no                                  | no                    |
+| recipe:                             | package                | binary                              | source                              |
+| :---                                | :---:                  | :---:                               | :---:                               |
+| support most distributions          | only RHEL & CentOS     | **yes**                             | **yes**                             |
+| support ARM and other architectures | only x86_64            | only x86_64                         | **yes**                             |
+| variants available                  | Core & XT              | **Core, Unlimited & ABC**           | **Core, Unlimited & ABC**           |
+| proper packaging                    | **yes**                | no                                  | no                                  |
+| SELinux support                     | **yes**                | no                                  | no                                  |
 
 The matrix of available configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
 
@@ -39,7 +39,7 @@ You can run a Bitcoin fork/variant like this:
     }
 ```
 
-The valid variants are `core`, `unlimited`, `abc`, `xt` and `btcd`.
+The valid variants are `abc`, `core`, `unlimited`, and `xt`.
 
 ### `bitcoin::binary` recipe
 
@@ -50,12 +50,6 @@ Downloads the binary and copies it along with an systemd service script.
 Downloads the release from GitHub and compiles it along with an systemd service script.
 
 Caution: you'll need at least 1 GB of free RAM to compile it (setting `make_options` to `-j1` can help too).
-
-### `bitcoin::git` recipe
-
-Downloads the latest commit from GitHub and compiles it along with an systemd service script.
-
-Caution: this will fetch the `HEAD` revision and might break without warnings.
 
 License
 -------

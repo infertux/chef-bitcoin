@@ -7,31 +7,12 @@
 
 default['bitcoin']['variant'] = nil # possible variants: core, unlimited, abc, xt
 
-default['bitcoin']['binary_name'] = \
-  case node['bitcoin']['variant']
-  when 'btcd' then 'btcd'
-  else 'bitcoind'
-  end
-default['bitcoin']['binary_cli_name'] = \
-  case node['bitcoin']['variant']
-  when 'btcd' then nil
-  else 'bitcoin-cli'
-  end
-
+default['bitcoin']['binary_name'] = 'bitcoind'
+default['bitcoin']['binary_cli_name'] = 'bitcoin-cli'
 default['bitcoin']['user'] = 'bitcoin'
 default['bitcoin']['home'] = "/home/#{node['bitcoin']['user']}"
-
-default['bitcoin']['conf_dir'] = \
-  case node['bitcoin']['variant']
-  when 'btcd' then "#{node['bitcoin']['home']}/.btcd"
-  else "#{node['bitcoin']['home']}/.bitcoin"
-  end
-default['bitcoin']['conf_file'] = \
-  case node['bitcoin']['variant']
-  when 'btcd' then "#{node['bitcoin']['conf_dir']}/btcd.conf"
-  else "#{node['bitcoin']['conf_dir']}/bitcoin.conf"
-  end
-
+default['bitcoin']['conf_dir'] = "#{node['bitcoin']['home']}/.bitcoin"
+default['bitcoin']['conf_file'] = "#{node['bitcoin']['conf_dir']}/bitcoin.conf"
 default['bitcoin']['service_file'] = "/usr/lib/systemd/system/#{node['bitcoin']['binary_name']}.service"
 default['bitcoin']['archive_file'] = "#{node['bitcoin']['variant']}.tar.gz"
 default['bitcoin']['archive_path'] = "#{Chef::Config['file_cache_path']}/bitcoin/#{node['bitcoin']['archive_file']}"
@@ -86,7 +67,3 @@ default['bitcoin']['source']['dependencies']['freebsd'] = %w(
 ).join(' ')
 default['bitcoin']['source']['configure_options'] = "--with-gui=no --disable-wallet --without-miniupnpc --disable-zmq --disable-tests --prefix=#{node['bitcoin']['prefix']}"
 default['bitcoin']['source']['make_options'] = '-j1'
-
-# 'git' recipe
-
-default['bitcoin']['git']['url']['btcd'] = 'https://github.com/btcsuite/btcd'
