@@ -5,8 +5,6 @@
 
 include_recipe 'bitcoin::_common'
 
-package node['bitcoin']['source']['dependencies'].fetch(node['platform_family'])
-
 directory File.dirname(node['bitcoin']['archive_path']) do
   owner node['bitcoin']['user']
   group node['bitcoin']['user']
@@ -16,10 +14,17 @@ end
 remote_file node['bitcoin']['archive_path'] do
   source node['bitcoin']['source']['url'][node['bitcoin']['variant']]
   checksum node['bitcoin']['source']['checksum'][node['bitcoin']['variant']]
-  notifies :run, 'script[compile_and_install_bitcoin]', :immediately
+  notifies :run, 'script[compile_and_install]', :immediately
 end
 
-script 'compile_and_install_bitcoin' do
+package 'dependencies' do
+  action :nothing
+  package_name node['bitcoin']['source']['dependencies'].fetch(node['platform_family'])
+end
+
+script 'compile_and_install' do
+  notifies :install, 'package[dependencies]', :before
+  notifies :remove, 'package[dependencies]', :delayed
   action :nothing
   cwd File.dirname(node['bitcoin']['archive_path'])
   interpreter 'sh'
@@ -39,10 +44,6 @@ script 'compile_and_install_bitcoin' do
     ln -svf #{node['bitcoin']['binary_cli_path']} /bin/
     rm -rf #{node['bitcoin']['extract_path']}
   SCRIPT
-end
-
-package node['bitcoin']['source']['dependencies'].fetch(node['platform_family']) do
-  action :remove
 end
 
 include_recipe 'bitcoin::_systemd'
