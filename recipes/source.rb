@@ -24,7 +24,6 @@ end
 
 script 'compile_and_install' do
   notifies :install, 'package[dependencies]', :before
-  notifies :remove, 'package[dependencies]', :delayed
   action :nothing
   cwd File.dirname(node['bitcoin']['archive_path'])
   interpreter 'sh'
