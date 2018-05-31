@@ -26,7 +26,7 @@ default['bitcoin']['checkblocks'] = 288 # NOTE: this is the default, you might w
 
 default['bitcoin']['binary']['version']['core']       = '0.16.0'
 default['bitcoin']['binary']['version']['unlimited']  = '1.0.3.0'
-default['bitcoin']['binary']['version']['bucash']     = '1.2.0.1'
+default['bitcoin']['binary']['version']['bucash']     = '1.3.0.1'
 default['bitcoin']['binary']['version']['abc']        = '0.17.1'
 default['bitcoin']['binary']['url']['core']           = "https://bitcoin.org/bin/bitcoin-core-#{node['bitcoin']['binary']['version']['core']}/bitcoin-#{node['bitcoin']['binary']['version']['core']}-x86_64-linux-gnu.tar.gz"
 default['bitcoin']['binary']['url']['unlimited']      = "https://www.bitcoinunlimited.info/downloads/bitcoinUnlimited-#{node['bitcoin']['binary']['version']['unlimited']}-linux64.tar.gz"
@@ -34,7 +34,7 @@ default['bitcoin']['binary']['url']['bucash']         = "https://www.bitcoinunli
 default['bitcoin']['binary']['url']['abc']            = "https://download.bitcoinabc.org/#{node['bitcoin']['binary']['version']['abc']}/linux/bitcoin-abc-#{node['bitcoin']['binary']['version']['abc']}-x86_64-linux-gnu.tar.gz"
 default['bitcoin']['binary']['checksum']['core']      = 'e6322c69bcc974a29e6a715e0ecb8799d2d21691d683eeb8fef65fc5f6a66477'
 default['bitcoin']['binary']['checksum']['unlimited'] = 'a6658bac22f082539969a243943c7d1a865abd40cdfe39465ff82b4eba387b22'
-default['bitcoin']['binary']['checksum']['bucash']    = '62d8e843576f6bd13fa5bc1f9b939577b63739eb99cbbd8bdec589cfdc774eb0'
+default['bitcoin']['binary']['checksum']['bucash']    = '4ebf0df5755fa2e3194906bfe38eeb797a22d58721beb733e39cb632da763e1a'
 default['bitcoin']['binary']['checksum']['abc']       = 'eccf8b61ba0549f6839e586c7dc6fc4bf6d7591ac432aaea8a7df0266b113d27'
 
 # 'package' recipe
@@ -47,16 +47,16 @@ default['bitcoin']['package']['repo_checksum']['fedora'] = 'cac67430e1e76b1b740c
 # 'source' recipe
 
 default['bitcoin']['source']['version']['core']       = 'v0.16.0'
-default['bitcoin']['source']['version']['unlimited']  = '1.0.3.0'
-default['bitcoin']['source']['version']['bucash']     = '1.2.0.1'
+default['bitcoin']['source']['version']['unlimited']  = '1.0.1.3'
+default['bitcoin']['source']['version']['bucash']     = '1.3.0.1'
 default['bitcoin']['source']['version']['abc']        = '0.17.1'
 default['bitcoin']['source']['url']['core']           = "https://github.com/bitcoin/bitcoin/archive/#{node['bitcoin']['source']['version']['core']}.tar.gz"
-default['bitcoin']['source']['url']['unlimited']      = "https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/v#{node['bitcoin']['source']['version']['unlimited']}.tar.gz"
+default['bitcoin']['source']['url']['unlimited']      = "https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/#{node['bitcoin']['source']['version']['unlimited']}.tar.gz"
 default['bitcoin']['source']['url']['bucash']         = "https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/bucash#{node['bitcoin']['source']['version']['bucash']}.tar.gz"
 default['bitcoin']['source']['url']['abc']            = "https://download.bitcoinabc.org/#{node['bitcoin']['binary']['version']['abc']}/linux/src/bitcoin-abc-#{node['bitcoin']['binary']['version']['abc']}.tar.gz"
 default['bitcoin']['source']['checksum']['core']      = '8ade43e420b6aad00645d79239c21947e47f37d1f974b4948b0da0b6999c28d5'
-default['bitcoin']['source']['checksum']['unlimited'] = '9c35c5391ffe5f0b0234de3133cd673729a88f96217d6e42521f6b8be9cfc533'
-default['bitcoin']['source']['checksum']['bucash']    = 'fd2c09d1c306dc8d56146c961c3ea83d553168295d4a647548ca28a885fa3948'
+default['bitcoin']['source']['checksum']['unlimited'] = '50e9f948ef27d583cd411bf0925da40ee55a515ce3c7745404f6aa1de6503c06'
+default['bitcoin']['source']['checksum']['bucash']    = '4b3c9270b11d4ea14279604b86084d30f21209590735b01ee4e30d69354acc81'
 default['bitcoin']['source']['checksum']['abc']       = '8baaedfb868fdbbde2a074b6396fb00dec28df35a0f6f29e9995778d3e08535a'
 default['bitcoin']['source']['dependencies']['debian'] = %w(
   build-essential libtool autoconf pkg-config libssl-dev libevent-dev
