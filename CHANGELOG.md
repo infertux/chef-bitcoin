@@ -1,6 +1,13 @@
 Bitcoin CHANGELOG
 =================
 
+## v1.7.0
+
+- Drop btcd.
+- Add BUCash.
+- Update tooling.
+- Update Bitcoin versions and dependencies.
+
 ## v1.6.0
 
 - Add btcd.
