@@ -65,7 +65,7 @@ default['bitcoin']['source']['dependencies']['debian'] = %w(
   libboost-system-dev libboost-test-dev libboost-thread-dev
 )
 default['bitcoin']['source']['dependencies']['rhel'] = %w(
-  gcc-c++ libtool make autoconf automake openssl-devel libevent-devel
+  gcc-c++ libtool make file autoconf automake openssl-devel libevent-devel
   boost-devel
 )
 default['bitcoin']['source']['dependencies']['freebsd'] = %w(
