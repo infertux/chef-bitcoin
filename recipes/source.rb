@@ -14,7 +14,12 @@ end
 remote_file node['bitcoin']['archive_path'] do
   source node['bitcoin']['source']['url'][node['bitcoin']['variant']]
   checksum node['bitcoin']['source']['checksum'][node['bitcoin']['variant']]
-  notifies :run, 'script[compile_and_install]', :immediately
+  notifies :delete, 'file[symlink]', :immediately
+end
+
+file 'symlink' do
+  action :nothing
+  path "/bin/#{node['bitcoin']['binary_name']}"
 end
 
 package 'dependencies' do
@@ -24,7 +29,7 @@ end
 
 script 'compile_and_install' do
   notifies :install, 'package[dependencies]', :before
-  action :nothing
+  creates "/bin/#{node['bitcoin']['binary_name']}"
   cwd File.dirname(node['bitcoin']['archive_path'])
   interpreter 'sh'
   flags '-eux'
