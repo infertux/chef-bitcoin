@@ -18,15 +18,13 @@ Usage
 
 ### Comparison table
 
-| recipe:                             | package                | binary                              | source                              |
-| :---                                | :---:                  | :---:                               | :---:                               |
-| support most distributions          | only RHEL & CentOS     | **yes**                             | **yes**                             |
-| support ARM and other architectures | only x86_64            | only x86_64                         | **yes**                             |
-| variants available                  | Core & XT              | **ABC, Core & Unlimited (Cash)**    | **ABC, Core & Unlimited (Cash)**    |
-| proper packaging                    | **yes**                | no                                  | no                                  |
-| SELinux support                     | **yes**                | no                                  | no                                  |
+| recipe:                 | package           | binary                       | source                       |
+| :---                    | :---:             | :---:                        | :---:                        |
+| supported distributions | RHEL & CentOS     | **any**                      | **any**                      |
+| supported architectures | x86_64 & aarch64  | x86_64                       | **any**                      |
+| supported variants      | ABC, Core & XT    | ABC, Core & Unlimited (Cash) | ABC, Core & Unlimited (Cash) |
 
-The matrix of available configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
+The matrix of supported configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
 
 You must select a Bitcoin fork/variant using `node['bitcoin']['variant'] = 'foobar'`.
 

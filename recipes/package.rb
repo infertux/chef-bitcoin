@@ -24,9 +24,10 @@ end
 
 variant = \
   case node['bitcoin']['variant']
+  when 'abc' then 'bitcoin-abc'
   when 'core' then 'bitcoin'
   when 'xt' then 'bitcoinxt'
-  else raise 'Valid variants are core and xt.'
+  else raise 'Valid variants are abc, core and xt.'
   end
 
 package "#{variant}-server" do
@@ -36,6 +37,8 @@ package "#{variant}-server" do
     true # NOTE: just a hack to display the above message at the right time
   end
 end
+
+package "#{variant}-utils"
 
 service node['bitcoin']['binary_name'] do
   provider Chef::Provider::Service::Systemd
