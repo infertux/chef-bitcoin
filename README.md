@@ -28,19 +28,13 @@ Usage
 
 The matrix of available configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
 
+You must select a Bitcoin fork/variant using `node['bitcoin']['variant'] = 'foobar'`.
+
+The valid variants are `abc`, `bucash`, `core`, `unlimited`, and `xt`.
+
 ### `bitcoin::package` recipe
 
 Configures repository from http://www.ringingliberty.com/bitcoin/ and installs pre-packaged binary with `bitcoin` systemd service.
-
-You can run a Bitcoin fork/variant like this:
-
-```
-    "bitcoin": {
-      "variant": "abc"
-    }
-```
-
-The valid variants are `abc`, `bucash`, `core`, `unlimited`, and `xt`.
 
 ### `bitcoin::binary` recipe
 
@@ -54,4 +48,5 @@ Caution: you'll need at least 1 GB of free RAM to compile it (setting `make_opti
 
 License
 -------
+
 MIT
