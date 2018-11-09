@@ -1,6 +1,12 @@
 Bitcoin CHANGELOG
 =================
 
+## v1.8.0
+
+- Add package recipe for Bitcoin ABC.
+- Update Bitcoin versions and dependencies.
+- Require Chef Client 13.3+.
+
 ## v1.7.0
 
 - Drop btcd.
