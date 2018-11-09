@@ -14,25 +14,32 @@ matrix:
       env: BUNDLE_WITHOUT=test
     - rvm: 2.4.5
       env: BUNDLE_WITHOUT=test
-    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=core
-    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=core
-    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=unlimited
-    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=bucash
-    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=unlimited
-    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=bucash
+
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=abc
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=bucash
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=core
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=binary  KITCHEN_VARIANT=unlimited
     - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=binary  KITCHEN_VARIANT=core
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=core
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=binary  KITCHEN_VARIANT=unlimited
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=binary  KITCHEN_VARIANT=bucash
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=unlimited
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=bucash
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=bucash
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=core
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=unlimited
+
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=binary  KITCHEN_VARIANT=abc
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=binary  KITCHEN_VARIANT=bucash
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=binary  KITCHEN_VARIANT=core
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=binary  KITCHEN_VARIANT=unlimited
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=package KITCHEN_VARIANT=abc
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=package KITCHEN_VARIANT=core
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=package KITCHEN_VARIANT=xt
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=bucash
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=core
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=unlimited
+
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc CHEF_VERSION=13.3
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=bucash CHEF_VERSION=13.3
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=core CHEF_VERSION=13.3
+    - env: KITCHEN_PLATFORM=debian KITCHEN_RECIPE=source  KITCHEN_VARIANT=unlimited CHEF_VERSION=13.3
   allow_failures:
     - rvm: ruby-head
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc # build is currently broken: https://travis-ci.org/infertux/chef-bitcoin/jobs/334315828
