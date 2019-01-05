@@ -32,7 +32,6 @@ matrix:
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=package KITCHEN_VARIANT=core
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=package KITCHEN_VARIANT=xt
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc
-    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=bucash
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=core
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=unlimited
 
@@ -43,5 +42,6 @@ matrix:
   allow_failures:
     - rvm: ruby-head
     - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=abc # build is currently broken: https://travis-ci.org/infertux/chef-bitcoin/jobs/334315828
+    - env: KITCHEN_PLATFORM=centos KITCHEN_RECIPE=source  KITCHEN_VARIANT=bucash # build is currently broken: https://travis-ci.org/infertux/chef-bitcoin/jobs/475659916
 script:
   - travis_wait 30 bundle exec rake
