@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: bitcoin
+# Cookbook:: bitcoin
 # Recipe:: _systemd
 #
 
@@ -18,7 +18,7 @@ template node['bitcoin']['service_file'] do
   variables(
     user: node['bitcoin']['user'],
     binary_path: node['bitcoin']['binary_path'],
-    conf_dir: node['bitcoin']['conf_dir']
+    conf_dir: node['bitcoin']['conf_dir'],
   )
   notifies :run, 'execute[systemd-daemon-reload]', :immediately
   only_if 'test -f /bin/systemctl && /bin/systemctl'

@@ -3,10 +3,10 @@ namespace :style do
   require 'cookstyle'
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new(:ruby) do |task|
+    task.options << "--config=#{__dir__}/.rubocop.yml"
     task.options << '--display-cop-names'
     task.options << '--extra-details'
     task.options << '--display-style-guide'
-    task.options << '--force-exclusion'
   end
 
   desc 'Run Chef style checks'

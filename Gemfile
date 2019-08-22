@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 
-group :lint do
+group :development do
+  gem 'berkshelf'
+  gem 'chef', '~> 14'
+  gem 'rake'
+end
+
+group :style do
   gem 'cookstyle'
   gem 'foodcritic'
 end
@@ -8,9 +14,4 @@ end
 group :test do
   gem 'kitchen-docker'
   gem 'test-kitchen'
-end
-
-group :development do
-  gem 'berkshelf'
-  gem 'rake'
 end

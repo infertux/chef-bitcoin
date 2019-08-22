@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: bitcoin
+# Cookbook:: bitcoin
 # Recipe:: package
 #
 

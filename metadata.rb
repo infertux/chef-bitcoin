@@ -5,7 +5,7 @@ license          'MIT'
 description      'Installs and configures Bitcoin'
 source_url       'https://github.com/infertux/chef-bitcoin'
 issues_url       'https://github.com/infertux/chef-bitcoin/issues'
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+
 version          '1.8.0'
 chef_version     '>= 13.3'
 
