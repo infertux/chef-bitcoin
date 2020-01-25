@@ -169,7 +169,7 @@ GEM
     polyglot (0.3.5)
     proxifier (1.0.3)
     public_suffix (3.1.1)
-    rack (2.0.7)
+    rack (2.0.8)
     rainbow (3.0.0)
     rake (12.3.3)
     retryable (3.0.4)
