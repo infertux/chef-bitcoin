@@ -1,13 +1,8 @@
 server=1
-checkblocks=<%= node['bitcoin']['checkblocks'] %>
 rpcbind=127.0.0.1
 rpcallowip=127.0.0.1
-txindex=1 # needed for ElectrumX server
+txindex=1 # needed for ElectrumX/Fulcrum server
 par=-1
-<% if %w(abc core xt).include?(node['bitcoin']['variant']) %>
-sendfreetransactions=1
-mempoolreplacement=0 # no RBF
-<% end %>
 dbcache=500 # set if you have 4+ GiB RAM
 #maxconnections=50 # set to limit bandwidth usage
 #prune=20000 # set if you have low disk space (in MB)

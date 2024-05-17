@@ -50,4 +50,4 @@ script 'compile_and_install' do
   SCRIPT
 end
 
-include_recipe 'bitcoin::_systemd'
+include_recipe 'bitcoin::_systemd' if systemd?

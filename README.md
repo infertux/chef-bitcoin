@@ -1,7 +1,9 @@
 Bitcoin Cookbook
 ================
+
+[![Funding](https://img.shields.io/liberapay/patrons/infertux.svg?logo=liberapay)](https://liberapay.com/infertux/donate)
 [![Cookbook](https://img.shields.io/cookbook/v/bitcoin.svg)](https://supermarket.getchef.com/cookbooks/bitcoin)
-[![Build Status](https://api.travis-ci.org/infertux/chef-bitcoin.svg?branch=master)](https://travis-ci.org/infertux/chef-bitcoin)
+[![Build Status](https://github.com/infertux/chef-bitcoin/actions/workflows/test.yml/badge.svg)](https://github.com/infertux/chef-bitcoin/actions)
 
 This cookbook downloads, installs and configures Bitcoin as a full node.
 
@@ -16,33 +18,15 @@ This cookbook does *not* make sure your port 8333 is open since this is very muc
 Usage
 -----
 
-### Comparison table
-
-| recipe:                 | package           | binary                       | source                       |
-| :---                    | :---:             | :---:                        | :---:                        |
-| supported distributions | RHEL & CentOS     | **any**                      | **any**                      |
-| supported architectures | x86_64 & aarch64  | x86_64                       | **any**                      |
-| supported variants      | ABC, Core & XT    | ABC, Core & Unlimited (Cash) | ABC, Core & Unlimited (Cash) |
-
-The matrix of supported configurations can be found [there](https://travis-ci.org/infertux/chef-bitcoin).
-
-You must select a Bitcoin fork/variant using `node['bitcoin']['variant'] = 'foobar'`.
-
-The valid variants are `abc`, `bucash`, `core`, `unlimited`, and `xt`.
-
-### `bitcoin::package` recipe
-
-Configures repository from http://www.ringingliberty.com/bitcoin/ and installs pre-packaged binary with `bitcoin` systemd service.
-
 ### `bitcoin::binary` recipe
 
-Downloads the binary and copies it along with an systemd service script.
+Downloads the binary and copies it along with an systemd service unit.
 
 ### `bitcoin::source` recipe
 
-Downloads the release from GitHub and compiles it along with an systemd service script.
+Downloads the source code and compiles it along with an systemd service unit.
 
-Caution: you'll need at least 1 GB of free RAM to compile it (setting `make_options` to `-j1` can help too).
+Caution: you'll need at least 1 GB of free RAM to compile it (setting `make_options` to `-j1` can help on low-end machines).
 
 License
 -------

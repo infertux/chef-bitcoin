@@ -1,4 +1,4 @@
-Travis CI is used to test a matrix of configurations defined in .travis.yml
+[GitHub Actions](https://github.com/infertux/chef-bitcoin/actions) is used to test a matrix of configurations.
 
 You can also run a build locally for a specific configuration, e.g.:
 

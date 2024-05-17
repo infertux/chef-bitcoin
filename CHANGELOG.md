@@ -1,6 +1,12 @@
 Bitcoin CHANGELOG
 =================
 
+## v2.0.0
+
+- Refactor and modernize entire cookbook.
+- Drop support for all variants except Core.
+- Update Bitcoin versions and dependencies.
+
 ## v1.8.0
 
 - Add package recipe for Bitcoin ABC.

@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  kitchen:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ "default-debian-11", "default-debian-12", "default-ubuntu-2204", "default-ubuntu-2404" ]
+        recipe: [ "binary", "source" ]
+        variant: [ "core" ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby  # latest stable release
+          bundler-cache: true  # runs 'bundle install' and caches installed gems automatically
+      - name: Run Test Kitchen platform ${{ matrix.platform }}
+        run: env KITCHEN_RECIPE=${{ matrix.recipe }} KITCHEN_VARIANT=${{ matrix.variant }} bundle exec rake kitchen:${{ matrix.platform }}
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby  # latest stable release
+          bundler-cache: true  # runs 'bundle install' and caches installed gems automatically
+      - name: Run style checks
+        run: bundle exec rake style:ruby

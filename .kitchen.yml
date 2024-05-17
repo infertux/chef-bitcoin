@@ -1,21 +1,60 @@
 ---
 driver:
-  name: docker
+  name: dokken
+  privileged: true # allows systemd services to start
+  chef_image: cincproject/cinc
+  chef_version: <%= ENV.fetch('CHEF_VERSION', 18) %>
 
 provisioner:
-  name: chef_zero
-  product_name: chef
-  product_version: <%= ENV["CHEF_VERSION"] || '14' %>
+  name: dokken
+  product_name: cinc
+  chef_binary: /opt/cinc/bin/cinc-client
+  deprecations_as_errors: true
+  enforce_idempotency: true
+  multiple_converge: 2
+
+transport:
+  name: dokken
+
+verifier:
+  name: inspec
 
 platforms:
-  - name: <%= ENV["KITCHEN_PLATFORM"] %>
-    driver_config:
-      use_sudo: false
+  # @see https://github.com/chef-cookbooks/testing_examples/blob/main/kitchen.dokken.yml
+  # @see https://hub.docker.com/u/dokken
+  - name: debian-11
+    driver:
+      image: dokken/debian-11
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get upgrade -y
+  - name: debian-12
+    driver:
+      image: dokken/debian-12
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get upgrade -y
+  - name: ubuntu-2204
+    driver:
+      image: dokken/ubuntu-22.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get upgrade -y
+  - name: ubuntu-2404
+    driver:
+      image: dokken/ubuntu-24.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get upgrade -y
 
 suites:
   - name: default
     run_list:
-      - recipe[bitcoin::<%= ENV["KITCHEN_RECIPE"] %>]
+      - recipe[bitcoin::<%= ENV.fetch('KITCHEN_RECIPE', 'binary') %>]
     attributes:
       bitcoin:
-        variant: <%= ENV["KITCHEN_VARIANT"] %>
+        variant: <%= ENV.fetch('KITCHEN_VARIANT', 'core') %>
