@@ -23,7 +23,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ruby  # latest stable release
+          ruby-version: .ruby-version
           bundler-cache: true  # runs 'bundle install' and caches installed gems automatically
       - name: Run Test Kitchen platform ${{ matrix.platform }}
         run: env KITCHEN_RECIPE=${{ matrix.recipe }} KITCHEN_VARIANT=${{ matrix.variant }} bundle exec rake kitchen:${{ matrix.platform }}
@@ -34,7 +34,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ruby  # latest stable release
+          ruby-version: .ruby-version
           bundler-cache: true  # runs 'bundle install' and caches installed gems automatically
       - name: Run style checks
         run: bundle exec rake style:ruby
